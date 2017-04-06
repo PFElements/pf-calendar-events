@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>pf-calendar demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../pf-calendar.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic pf-calendar demo</h3>
+      <demo-snippet>
+        <template>
+          <style is="custom-style">
+            #pf-calendar {
+
+              --pf-calendar-day-color:white;
+              --pf-calendar-month-title-color:white;
+
+
+            }
+
+          </style>
+          <pf-calendar id="pf-calendar"
+                  data='[
+                          { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
+                          { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1499185140000" },
+                          { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
+          >
+
+          </pf-calendar>
+
+
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
