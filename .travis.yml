@@ -10,7 +10,6 @@ addons:
       - google-chrome-stable
 install:
   - npm install -g bower polymer-cli@next
-  - polymer install --variants
   - npm install -g bower polylint web-component-tester
   - bower install
 before_script:
