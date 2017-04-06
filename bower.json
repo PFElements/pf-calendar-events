@@ -1,6 +1,7 @@
 {
   "name": "pf-calendar-events",
   "main": "pf-calendar-events.html",
+  "element-collection": "pf-elements",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0-rc.2"
   },
