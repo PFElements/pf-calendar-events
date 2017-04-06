@@ -1,5 +1,12 @@
 # \<pf-event-cal\>
 
+# pf-elements
+A Polymer 2.0 based collection of reusable web components 
+
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+
+## Demo
+[Click here for docs & demo](https://github.com/PFElements/pf-calendar-events/blob/master/demo/index.html)
 
 
 ## Install the Polymer-CLI
@@ -18,6 +25,23 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 ```
 -->
 ```html
+
+# PF Calendar Events
+
+An Advanced/composite Polymer 2.0 based custom elements that can be used to set Events/appointments/meetings in a calendar. 
+
+
+[pf-calendar-events](https://github.com/PFElements/pf-calendar-events) [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events.svg)](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events)  [![Build Status](https://travis-ci.org/PFElements/pf-calendar-events.svg?branch=master)](https://travis-ci.org/PFElements/pf-calendar-events) 
+
+## Learn more
+
+See the list of elements, demos, and documentation by browsing this collection on webcomponents.org:
+
+### [Take me to webcomponents.org ›](https://www.webcomponents.org/element/PFElements/pf-pageindicator)
+
+---
+
+
  <pf-calendar-events
                   data='[
                           { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
@@ -86,3 +110,20 @@ $ polymer test
 ```
 
 Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+
+## Contributing
+
+Comments, questions, suggestions, issues, and pull requests are all welcome.
+
+
+### Some ways to help:
+
+- **Test the elements and provide feedback**: We would love to hear your feedback on anything related to the elements, like features, API and design. The best way to start is by trying them out. And to get a quick response, either drop a question/comment on the chat or open an issue in GitHub.
+- **Report bugs**: File issues for the elements in their respective GitHub projects.
+- **Send pull requests**: If you want to contribute code, check out the development instructions below.
+
+We encourage you to read the [contribution instructions by GitHub](https://guides.github.com/activities/contributing-to-open-source/#contributing) also.
+
+## License
+
+MIT License
