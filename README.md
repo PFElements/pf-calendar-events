@@ -11,14 +11,14 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="pf-event-cal.html">
+    <link rel="import" href="pf-calendar-events.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
 ```
 -->
 ```html
- <pf-event-cal
+ <pf-calendar-events
                   data='[
                           { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
                           { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1499185140000" },
@@ -26,7 +26,7 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
                           { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
           >
 
-          </pf-event-cal>
+          </pf-calendar-events>
 ```
 ### Styling
 The following custom properties and mixins are available for styling:
@@ -48,6 +48,12 @@ Custom property                         | Description                           
 `--pf-calendar-day-name-color           |  Name of Day color e.g(MON,TUE,WED)     | rgba(255` 255, 255, .5)
 `--pf-calendar-event-detail-bg`         |  Event box background                   | rgba(164, 164, 164, 1)
 `--pf-calendar-no-event-color`          |  color of label "NO Event"              | #000
+`--pf-calendar-addevent-button-bg-color'|  Add Event Button color                 | rgba(164, 164, 164, 1)
+`--pf-calendar-addevent-button-text-color`| Add Event text color                  | #fff
+`--pf-calendar-addevent-button-hover-color`|  Add event button hover color        | rgba(170, 170, 170, 1)
+`--pf-calendar-addbutton-disply`        |  to hide button set "none"              |inline-block
+`--pf-calendar-deletebutton-disply`     |  to hide button set "none"              |inline
+`--pf-calendar-editbutton-disply`       |  to hide button set "none"              |inline
 `--pf-calendar-legend-bg`               |  Background color of legend bar         | rgba(60, 60, 60, 1)
 
 ## Viewing Your Application

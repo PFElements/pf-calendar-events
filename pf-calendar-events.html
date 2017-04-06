@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 
+
 <!--
 ### Styling
 The following custom properties and mixins are available for styling:
@@ -21,16 +22,22 @@ Custom property                         | Description                           
 `--pf-calendar-day-name-color`          |  Name of Day color e.g(MON,TUE,WED)     | rgba(255` 255, 255, .5)
 `--pf-calendar-event-detail-bg`         |  Event box background                   | rgba(164, 164, 164, 1)
 `--pf-calendar-no-event-color`          |  color of label "NO Event"              | #000
+`--pf-calendar-addevent-button-bg-color'|  Add Event Button color                 | rgba(164, 164, 164, 1)
+`--pf-calendar-addevent-button-text-color`| Add Event text color                  | #fff
+`--pf-calendar-addevent-button-hover-color`|  Add event button hover color        | rgba(170, 170, 170, 1)
+`--pf-calendar-addbutton-disply`        |  to hide button set "none"              |inline-block
+`--pf-calendar-deletebutton-disply`     |  to hide button set "none"              |inline
+`--pf-calendar-editbutton-disply`       |  to hide button set "none"              |inline
 `--pf-calendar-legend-bg`               |  Background color of legend bar         | rgba(60, 60, 60, 1)
 
 
-`pf-calendar`
+`pf-calendar-events`
 
 
 @demo demo/index.html
 -->
 
-<dom-module id="pf-calendar">
+<dom-module id="pf-calendar-events">
   <template>
     <style>
       :host {
@@ -285,7 +292,11 @@ Custom property                         | Description                           
       .event.empty {
         color: var(--pf-calendar-no-event-color,#000);
       }
+.editEvent{
 
+display:var(--pf-calendar-editbutton-disply,inline);
+
+}
       .event-category {
         height: 10px;
         width: 10px;
@@ -297,6 +308,33 @@ Custom property                         | Description                           
       .event span {
         display: inline-block;
         padding: 0 0 0 7px;
+        cursor:pointer
+      }
+.addbutton {
+  margin: 2px 16px;
+
+ background-color:var(--pf-calendar-addevent-button-bg-color,rgba(164, 164, 164, 1));
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+
+  display:var(--pf-calendar-addbutton-disply,inline-block);
+  cursor:pointer;
+  font-family:Arial;
+  font-size:15px;
+  font-weight:bold;
+  padding:6px 24px;
+  text-decoration:none;
+  color: var(--pf-calendar-addevent-button-text-color,#fff);
+
+}
+      .addbutton:hover {
+
+        background-color:var(--pf-calendar-addevent-button-hover-color,rgba(170, 170, 170, 1));
+      }
+      .addbutton:active {
+        position:relative;
+        top:1px;
       }
 
       .legend {
@@ -433,14 +471,11 @@ Custom property                         | Description                           
 
 
   <script>
-    class MyElement extends  Polymer.Element {
-      static get is() { return 'pf-calendar'; }
+    class PFCalendar extends  Polymer.Element {
+      static get is() { return 'pf-calendar-events'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'pf-calendar'
-          },
+
           data:{
             type: Object
           },
@@ -449,14 +484,22 @@ Custom property                         | Description                           
           },
           today:{
             type: Object
-          }
+          },
+          date:{
+            type: Object
+          },
         };
       }
       Calendar(selector, event) {
 
         this.el = selector;
         this.events = event;
-        this.current = moment().date(1);
+        if(this.date){
+          this.current = moment(parseInt(this.date)).date(1);
+        }else{
+          this.current = moment().date(1);
+        }
+
         this.draw();
         var current = document.querySelector('.today');
         if(current) {
@@ -653,6 +696,11 @@ var self=this;
           }
           return classes.join(' ');
       }
+      _daySelected(d,eve){
+        var mday=d;
+        var mevent=event
+        this.dispatchEvent(new CustomEvent('date-select', {detail: {date: d,events: eve}}));
+      }
       openDay(el)
       {
           var details, arrow;
@@ -700,13 +748,30 @@ var self=this;
             }
             return memo;
           }, []);
-
-          this.renderEvents(todaysEvents, details);
+        this._daySelected(day,todaysEvents);
+          this.renderEvents(day,todaysEvents, details);
 
           arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
         }
+      _selectEvent(ev){
+        var mEv=ev;
+        this.dispatchEvent(new CustomEvent('event-select', {detail: {event: ev}}));
 
-      renderEvents(events, ele)
+      }
+      _editEvent(ev){
+        var mEv=ev;
+        this.dispatchEvent(new CustomEvent('event-edit', {detail: {event: ev}}));
+
+      } _dltEvent(ev){
+        var mEv=ev;
+        this.dispatchEvent(new CustomEvent('event-delete', {detail: {event: ev}}));
+
+      }
+      _addnewEve(date){
+        var mEv=date;
+        this.dispatchEvent(new CustomEvent('event-add', {detail: {date: date}}));
+      }
+      renderEvents(day,events, ele)
       {
           var self=this;
           //Remove any events in the current details element
@@ -717,9 +782,22 @@ var self=this;
             var div = self.createElement('div', 'event');
             var square = self.createElement('div', 'event-category ' + ev.color);
             var span = self.createElement('span', '', ev.eventName);
+            var editButton = self.createElement('button', 'editEvent', "Edit");
+            var dltButton = self.createElement('button', 'dltEvent', "Delete");
+            span.addEventListener('click', function () {
+              self._selectEvent(ev);
+            });
+            editButton.addEventListener('click', function () {
+              self._editEvent(ev);
+            });
+            dltButton.addEventListener('click', function () {
+              self._dltEvent(ev);
+            });
 
             div.appendChild(square);
             div.appendChild(span);
+            div.appendChild(editButton);
+            div.appendChild(dltButton);
             wrapper.appendChild(div);
           });
 
@@ -730,7 +808,11 @@ var self=this;
             div.appendChild(span);
             wrapper.appendChild(div);
           }
-
+       var addbutton= this.createElement('button','addbutton','add new event');
+        addbutton.addEventListener('click', function () {
+          self._addnewEve(day);
+        });
+        wrapper.appendChild(addbutton);
           if (currentWrapper) {
             currentWrapper.className = 'events out';
             currentWrapper.addEventListener('webkitAnimationEnd', function () {
@@ -808,6 +890,29 @@ var self=this;
         });
 return data;
       }
+      ready() {
+        super.ready();
+        this.addEventListener('date-select', e => this._handleClick(e)
+      );
+        this.addEventListener('event-select', e => this._handleEvent(e)
+      );
+        this.addEventListener('event-edit', e => this._handleEvent(e)
+      );
+        this.addEventListener('event-delete', e => this._handleEvent(e)
+      );
+        this.addEventListener('event-add', e => this._addEvent(e)
+      );
+      }
+      _addEvent(e){
+        var event= e.detail.date
+      }
+      _handleEvent(e){
+        var event= e.detail.event
+      }
+      _handleClick(e){
+        var day=e.detail.date;
+        var eve=e.detail.events;
+      }
       connectedCallback() {
         /*
 var data= [
@@ -833,8 +938,12 @@ var data= [
   { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
 
 ];*/
+if(this.date){
+  this.today = moment(parseInt(this.date));
+}else{
+  this.today = moment();
+}
 
-        this.today = moment();
         this.calendar = this.Calendar(this.$.calendar, this.convertMillsDate(this.data));
       //  window.Calendar = Calendar;
      //   drawCal(this.$.calendar,this);
@@ -847,7 +956,7 @@ var data= [
 
     }
 
-    window.customElements.define(MyElement.is, MyElement);
+    window.customElements.define(PFCalendar.is, PFCalendar);
 
 
 

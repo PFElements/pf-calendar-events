@@ -10,14 +10,14 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../pf-calendar.html">
+    <link rel="import" href="../pf-calendar-events.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic pf-calendar demo</h3>
+      <h3>Basic pf-calendar-events demo</h3>
       <demo-snippet>
         <template>
           <style is="custom-style">
@@ -30,15 +30,16 @@
             }
 
           </style>
-          <pf-calendar id="pf-calendar"
-                  data='[
+          <pf-calendar-events id="pf-calendar"
+
+                       data='[
                           { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
                           { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1499185140000" },
                           { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1491581940000" },
                           { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
           >
 
-          </pf-calendar>
+          </pf-calendar-events>
 
 
         </template>
