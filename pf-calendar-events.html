@@ -349,21 +349,36 @@ margin:2px;
         cursor: pointer;
           color: var(--pf-calendar-event-color,black);
       }
-      
+       .numberCircle {
+           border-radius: 50%;
+           behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+
+           width: 36px;
+           height: 36px;
+
+
+           background: var(--pf-calendar-selected-date-bg,black);
+           border: 2px solid transparent;
+           color: var(--pf-calendar-selected-date-color,#fff);
+           text-align: center;
+           font-size: 24px;
+           letter-spacing: 1.5px;
+
+       }
       .addbutton {
         margin: 8px 16px;
-        background-color: var(--pf-calendar-addevent-button-bg-color, rgba(164, 164, 164, 1));
-        -moz-border-radius: 6px;
-        -webkit-border-radius: 6px;
-        border-radius: 6px;
+          width:25px;
+          height:25px;
+
+
+          /*width of the image*/
+          background: url(images/ic_add.png) left top no-repeat;
+
+
+
         display: var(--pf-calendar-addbutton-disply, inline-block);
         cursor: pointer;
-        font-family: Arial;
-        font-size: 15px;
-        font-weight: bold;
-        padding: 6px 24px;
-        text-decoration: none;
-        color: var(--pf-calendar-addevent-button-text-color, #fff);
+
       }
       
       .addbutton:hover {
@@ -626,14 +641,15 @@ margin:2px;
            --pf-calendar-event-detail-bg:#009688;
            --pf-calendar-event-color:#fff;
            --pf-calendar-addevent-button-bg-color:#fff;
-           --pf-calendar-addevent-button-text-color:#009688;
+           --pf-calendar-addevent-button-hover-color:#009688;
 
            --pf-calendar-legend-bg:#009688;
            --pf-calendar-header-height:111px;
            --pf-calendar-month-title-font-size:36px;
            --pf-calendar-month-title-line-height:113px;
 
-
+           --pf-calendar-selected-date-bg:#009688;
+           --pf-calendar-selected-date-color:#fff;
        }
     </style>
 
@@ -669,7 +685,7 @@ margin:2px;
             }
         };
       }
-      Calendar(selector, event) {
+      _Calendar(selector, event) {
 
         this.el = selector;
         this.events = event;
@@ -679,7 +695,7 @@ margin:2px;
           this.current = moment().date(1);
         }
 
-        this.draw();
+        this._draw();
         var current = document.querySelector('.today');
         if (current) {
           var self = this;
@@ -688,36 +704,36 @@ margin:2px;
           }, 500);
         }
       }
-      draw() {
+      _draw() {
 
         //Create Header
-        this.drawHeader();
+        this._drawHeader();
 
         //Draw Month
-        this.drawMonth();
+        this._drawMonth();
 
-        this.drawLegend();
+        this._drawLegend();
 
       }
 
-      drawHeader() {
+      _drawHeader() {
 
         var self = this;
         if (!this.header) {
           //Create the header elements
-          this.header = this.createElement('div', 'header');
+          this.header = this._createElement('div', 'header');
           this.header.className = 'header';
 
-          this.calendarTitle = this.createElement('h1');
+          this.calendarTitle = this._createElement('h1');
 
-          var right = this.createElement('div', 'right');
+          var right = this._createElement('div', 'right');
           right.addEventListener('click', function () {
-            self.nextMonth();
+            self._nextMonth();
           });
 
-          var left = this.createElement('div', 'left');
+          var left = this._createElement('div', 'left');
           left.addEventListener('click', function () {
-            self.prevMonth();
+            self._prevMonth();
           });
 
           //Append the Elements
@@ -731,7 +747,7 @@ margin:2px;
 
       }
 
-      drawMonth() {
+      _drawMonth() {
 
         var self = this;
         /*
@@ -747,7 +763,7 @@ margin:2px;
           this.oldMonth.className = 'month out ' + (self.next ? 'next' : 'prev');
           this.oldMonth.addEventListener('webkitAnimationEnd', function () {
             self.oldMonth.parentNode.removeChild(self.oldMonth);
-            self.month = self.createElement('div', 'month');
+            self.month = self._createElement('div', 'month');
             self.backFill();
             self.currentMonth();
             self.fowardFill();
@@ -757,7 +773,7 @@ margin:2px;
             }, 16);
           });
         } else {
-          this.month = this.createElement('div', 'month');
+          this.month = this._createElement('div', 'month');
           this.el.appendChild(this.month);
           this.backFill();
           this.currentMonth();
@@ -812,7 +828,7 @@ margin:2px;
       getWeek(day) {
 
         if (!this.week || day.day() === 0) {
-          this.week = this.createElement('div', 'week');
+          this.week = this._createElement('div', 'week');
           this.month.appendChild(this.week);
         }
       }
@@ -824,22 +840,28 @@ margin:2px;
         this.getWeek(day);
 
         //Outer Day
-        var outer = this.createElement('div', this.getDayClass(day));
+        var outer = this._createElement('div', this.getDayClass(day));
         if (day.month() == this.current.month()) {
           outer.addEventListener('click', function () {
             self.openDay(this);
+              var currentSelected = self.shadowRoot.querySelector('.numberCircle');
+              if(currentSelected) {
+                  currentSelected.className = "day-number"
+              }
+                  var dayNum=outer.querySelectorAll('.day-number')[0]
+             dayNum.className="numberCircle"
           });
         }
 
         //Day Name
-        var name = this.createElement('div', 'day-name', day.format('ddd'));
+        var name = this._createElement('div', 'day-name', day.format('ddd'));
 
         //Day Number
-        var number = this.createElement('div', 'day-number', day.format('DD'));
+        var number = this._createElement('div', 'day-number', day.format('DD'));
 
 
         //Events
-        var events = this.createElement('div', 'day-events');
+        var events = this._createElement('div', 'day-events');
         this.drawEvents(day, events);
 
         outer.appendChild(name);
@@ -859,19 +881,22 @@ margin:2px;
           }, []);
 
           todaysEvents.forEach(function (ev) {
-            var evSpan = self.createElement('span', ev.color);
+            var evSpan = self._createElement('span', ev.color);
             element.appendChild(evSpan);
           });
         }
       }
 
-      getDayClass(day) {
+      getDayClass(day,newClass) {
         var classes = ['day'];
         if (day.month() !== this.current.month()) {
           classes.push('other');
         } else if (this.today.isSame(day, 'day')) {
           classes.push('today');
         }
+          if(newClass){
+              classes.push(newClass)
+          }
         return classes.join(' ');
       }
       _daySelected(d, eve) {
@@ -908,10 +933,10 @@ margin:2px;
           }
 
           //Create the Details Container
-          details = this.createElement('div', 'details in');
+          details = this._createElement('div', 'details in');
 
           //Create the arrow
-          var arrow = this.createElement('div', 'arrow');
+          var arrow = this._createElement('div', 'arrow');
 
           //Create the event wrapper
 
@@ -952,15 +977,15 @@ margin:2px;
         var self = this;
         //Remove any events in the current details element
         var currentWrapper = ele.querySelector('.events');
-        var wrapper = this.createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
+        var wrapper = this._createElement('div', 'events in' + (currentWrapper ? ' new' : ''));
 
         events.forEach(function (ev) {
-          var div = self.createElement('div', 'event');
-          var square = self.createElement('div', 'event-category ' + ev.color);
-          var span = self.createElement('span', '', ev.eventName);
-          var editButton = self.createElement('img', 'editEvent', "Edit");
-          var dltButton = self.createElement('img', 'dltEvent', "Delete");
-          var editDltContainer = self.createElement('div', 'editDltContainer');
+          var div = self._createElement('div', 'event');
+          var square = self._createElement('div', 'event-category ' + ev.color);
+          var span = self._createElement('span', '', ev.eventName);
+          var editButton = self._createElement('img', 'editEvent', "Edit");
+          var dltButton = self._createElement('img', 'dltEvent', "Delete");
+          var editDltContainer = self._createElement('div', 'editDltContainer');
           span.addEventListener('click', function () {
             self._selectEvent(ev);
           });
@@ -979,13 +1004,13 @@ margin:2px;
         });
 
         if (!events.length) {
-          var div = this.createElement('div', 'event empty');
-          var span = this.createElement('span', '', 'No Events');
+          var div = this._createElement('div', 'event empty');
+          var span = this._createElement('span', '', 'No Events');
 
           div.appendChild(span);
           wrapper.appendChild(div);
         }
-        var addbutton = this.createElement('button', 'addbutton', 'Add');
+        var addbutton = this._createElement('img', 'addbutton', 'Add');
         addbutton.addEventListener('click', function () {
           self._addnewEve(day);
         });
@@ -1013,9 +1038,9 @@ margin:2px;
         }
       }
 
-      drawLegend() {
+      _drawLegend() {
         var self = this;
-        var legend = this.createElement('div', 'legend');
+        var legend = this._createElement('div', 'legend');
         var calendars = this.events.map(function (e) {
           return e.calendar + '|' + e.color;
         }).reduce(function (memo, e) {
@@ -1025,29 +1050,29 @@ margin:2px;
           return memo;
         }, []).forEach(function (e) {
           var parts = e.split('|');
-          var entry = self.createElement('span', 'entry ' + parts[1], parts[0]);
+          var entry = self._createElement('span', 'entry ' + parts[1], parts[0]);
           legend.appendChild(entry);
         });
         this.el.appendChild(legend);
       }
 
-      nextMonth() {
+      _nextMonth() {
 
         this.current.add('months', 1);
         this.next = true;
-        this.draw();
+        this._draw();
       }
 
-      prevMonth() {
+      _prevMonth() {
 
         this.current.subtract('months', 1);
         this.next = false;
-        this.draw();
+        this._draw();
       }
 
 
 
-      createElement(tagName, className, innerText) {
+      _createElement(tagName, className, innerText) {
         var ele = document.createElement(tagName);
 
         if (className) {
@@ -1058,7 +1083,7 @@ margin:2px;
         }
         return ele;
       }
-      convertMillsDate(data) {
+      _convertMillsDate(data) {
         data.forEach(function (ev) {
           ev.date = moment(parseInt(ev.date))
 
@@ -1125,7 +1150,7 @@ var data= [
           this.today = moment();
         }
 
-        this.calendar = this.Calendar(this.$.calendar, this.convertMillsDate(this.data));
+        this.calendar = this._Calendar(this.$.calendar, this._convertMillsDate(this.data));
         //  window.Calendar = Calendar;
         //   drawCal(this.$.calendar,this);
         //   var el2 = new PfCalendar(this.$.calendar,data);
