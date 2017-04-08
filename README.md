@@ -1,4 +1,3 @@
-# \<pf-event-cal\>
 
 # pf-elements
 A Polymer 2.0 based collection of reusable web components 
