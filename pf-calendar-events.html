@@ -74,242 +74,331 @@ Custom property                         | Description                           
         user-select: none;
       }
 
-      #calendar {
-        -webkit-transform: translate3d(0, 0, 0);
-        -moz-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        width: var(--pf-calendar-width, 420px);
-        margin: 0 auto;
-        height: var(--pf-calendar-height, 570px);
-        overflow: hidden;
-      }
-      
-      .header {
-        height:  var(--pf-calendar-header-height,50px);
-        width: 420px;
-        background: var(--pf-calendar-header-background, rgba(66, 66, 66, 1));
-        text-align: center;
-        position: relative;
-        z-index: 100;
-      }
-      
-      .header h1 {
-        margin: 0;
-        padding: 0;
-        font-size:var(--pf-calendar-month-title-font-size,20px);
-        line-height: var(--pf-calendar-month-title-line-height,50px);
-        font-weight: 100;
-        letter-spacing: 1px;
-        color: var(--pf-calendar-month-title-color, #000);
-      }
-      
-      .left,
-      .right {
-        position: absolute;
-        width: 0px;
-        height: 0px;
-        border-style: solid;
-        top: 50%;
-        margin-top: -7.5px;
-        cursor: pointer;
-      }
-      
-      .left {
-        border-width: 7.5px 10px 7.5px 0;
-        border-color: transparent var(--pf-calendar-header-left-arrow-color, rgba(160, 159, 160, 1)) transparent transparent;
-        left: 20px;
-      }
-      
-      .right {
-        border-width: 7.5px 0 7.5px 10px;
-        border-color: transparent transparent transparent var(--pf-calendar-header-right-arrow-color, rgba(160, 159, 160, 1));
-        right: 20px;
-      }
-      
-      .month {
-        /*overflow: hidden;*/
-        opacity: 0;
-      }
-      
-      .month.new {
-        -webkit-animation: fadeIn 1s ease-out;
-        opacity: 1;
-      }
-      
-      .month.in.next {
-        -webkit-animation: moveFromTopFadeMonth .4s ease-out;
-        -moz-animation: moveFromTopFadeMonth .4s ease-out;
-        animation: moveFromTopFadeMonth .4s ease-out;
-        opacity: 1;
-      }
-      
-      .month.out.next {
-        -webkit-animation: moveToTopFadeMonth .4s ease-in;
-        -moz-animation: moveToTopFadeMonth .4s ease-in;
-        animation: moveToTopFadeMonth .4s ease-in;
-        opacity: 1;
-      }
-      
-      .month.in.prev {
-        -webkit-animation: moveFromBottomFadeMonth .4s ease-out;
-        -moz-animation: moveFromBottomFadeMonth .4s ease-out;
-        animation: moveFromBottomFadeMonth .4s ease-out;
-        opacity: 1;
-      }
-      
-      .month.out.prev {
-        -webkit-animation: moveToBottomFadeMonth .4s ease-in;
-        -moz-animation: moveToBottomFadeMonth .4s ease-in;
-        animation: moveToBottomFadeMonth .4s ease-in;
-        opacity: 1;
-      }
-      
-      .week {
-        background: var(--pf-calendar-week-bg, #4A4A4A);
-      }
-      
-      .day {
-        display: inline-block;
-        width: 60px;
-        padding: 10px;
-        text-align: center;
-        vertical-align: top;
-        cursor: pointer;
-        color: var(--pf-calendar-day-color, black);
-        background: var(--pf-calendar-day-bg, #4A4A4A);
-        position: relative;
-        z-index: 100;
-      }
-      
-      .day.other {
-        color: var(--pf-calendar-other-day-color, rgba(255, 255, 255, .3));
-      }
-      
-      .day.today {
-        color: var(--pf-calendar-today-color, rgba(156, 202, 235, 1));
-      }
-      
-      .day-name {
-        font-size: 9px;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-        color: var(--pf-calendar-day-name-color, rgba(255, 255, 255, .5));
-        letter-spacing: .7px;
-      }
-      
-      .day-number {
-        font-size: 24px;
-        letter-spacing: 1.5px;
-      }
-      
-      .day .day-events {
-        list-style: none;
-        margin-top: 3px;
-        text-align: center;
-        height: 12px;
-        line-height: 6px;
-        overflow: hidden;
-      }
-      
-      .day .day-events span {
-        vertical-align: top;
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-        width: 5px;
-        height: 5px;
-        line-height: 5px;
-        margin: 0 1px;
-      }
-      
-      .blue {
-        background: rgba(156, 202, 235, 1);
-      }
-      
-      .orange {
-        background: rgba(247, 167, 0, 1);
-      }
-      
-      .green {
-        background: rgba(153, 198, 109, 1);
-      }
-      
-      .yellow {
-        background: rgba(249, 233, 0, 1);
-      }
-      
-      .details {
-        position: relative;
-        width: 420px;
-        height: 75px;
-        background: var(--pf-calendar-event-detail-bg, rgba(164, 164, 164, 1));
-        margin-top: 5px;
-        border-radius: 4px;
-      }
-      
-      .details.in {
-        -webkit-animation: moveFromTopFade .5s ease both;
-        -moz-animation: moveFromTopFade .5s ease both;
-        animation: moveFromTopFade .5s ease both;
-      }
-      
-      .details.out {
-        -webkit-animation: moveToTopFade .5s ease both;
-        -moz-animation: moveToTopFade .5s ease both;
-        animation: moveToTopFade .5s ease both;
-      }
-      
-      .arrow {
-        position: absolute;
-        top: -5px;
-        left: 50%;
-        margin-left: -2px;
-        width: 0px;
-        height: 0px;
-        border-style: solid;
-        border-width: 0 5px 5px 5px;
-        border-color: transparent transparent var(--pf-calendar-event-detail-bg, rgba(164, 164, 164, 1)) transparent;
-        transition: all 0.7s ease;
-      }
-      
-      .events {
-        height: 75px;
-        padding: 7px 0;
-        overflow-y: auto;
-        overflow-x: hidden;
-      }
-      
-      .events.in {
-        -webkit-animation: fadeIn .3s ease both;
-        -moz-animation: fadeIn .3s ease both;
-        animation: fadeIn .3s ease both;
-      }
-      
-      .events.in {
-        -webkit-animation-delay: .3s;
-        -moz-animation-delay: .3s;
-        animation-delay: .3s;
-      }
-      
-      .details.out .events {
-        -webkit-animation: fadeOutShrink .4s ease both;
-        -moz-animation: fadeOutShink .4s ease both;
-        animation: fadeOutShink .4s ease both;
-      }
-      
-      .events.out {
-        -webkit-animation: fadeOut .3s ease both;
-        -moz-animation: fadeOut .3s ease both;
-        animation: fadeOut .3s ease both;
-      }
-      
-      .event {
-        font-size: 16px;
-        line-height: 22px;
-        letter-spacing: .5px;
-        padding: 2px 16px;
-        vertical-align: top;
-      }
+       .classic-calendar {
+           -webkit-transform: translate3d(0, 0, 0);
+           -moz-transform: translate3d(0, 0, 0);
+           transform: translate3d(0, 0, 0);
+           width: var(--pf-calendar-width, 420px);
+           margin: 0 auto;
+           height: var(--pf-calendar-height, 570px);
+           overflow: hidden;
+       }
+       .material-calendar {
+           -webkit-transform: translate3d(0, 0, 0);
+           -moz-transform: translate3d(0, 0, 0);
+           transform: translate3d(0, 0, 0);
+           width: var(--pf-calendar-width, 420px);
+           margin: 0 auto;
+           height: var(--pf-calendar-height, 630px);
+           overflow: hidden;
+           font-family: 'Roboto Condensed', sans-serif;
+       }
+
+       .classic-calendar .header {
+           height:  var(--pf-calendar-header-height,50px);
+           width: 420px;
+           background: var(--pf-calendar-header-background, rgba(66, 66, 66, 1));
+           text-align: center;
+           position: relative;
+           z-index: 100;
+       }
+       .material-calendar .header {
+           height:  var(--pf-calendar-header-height,111px);
+           width: 420px;
+           background: var(--pf-calendar-header-background, #009688);
+           text-align: center;
+           position: relative;
+           z-index: 100;
+       }
+
+       .classic-calendar .header h1 {
+           margin: 0;
+           padding: 0;
+           font-size:var(--pf-calendar-month-title-font-size,20px);
+           line-height: var(--pf-calendar-month-title-line-height,50px);
+           font-weight: 100;
+           letter-spacing: 1px;
+           color: var(--pf-calendar-month-title-color, #000);
+       }
+       .material-calendar .header h1 {
+           margin: 0;
+           padding: 0;
+           font-size:var(--pf-calendar-month-title-font-size,36px);
+           line-height: var(--pf-calendar-month-title-line-height,113px);
+           font-weight: 100;
+           letter-spacing: 1px;
+           color: var(--pf-calendar-month-title-color, #fff);
+       }
+
+       .left,
+       .right {
+           position: absolute;
+           width: 0px;
+           height: 0px;
+           border-style: solid;
+           top: 50%;
+           margin-top: -7.5px;
+           cursor: pointer;
+       }
+
+       .classic-calendar  .left {
+           border-width: 7.5px 10px 7.5px 0;
+           border-color: transparent var(--pf-calendar-header-left-arrow-color, rgba(160, 159, 160, 1)) transparent transparent;
+           left: 20px;
+       }
+
+       .classic-calendar  .right {
+           border-width: 7.5px 0 7.5px 10px;
+           border-color: transparent transparent transparent var(--pf-calendar-header-right-arrow-color, rgba(160, 159, 160, 1));
+           right: 20px;
+       }
+       .material-calendar  .left {
+           border-width: 7.5px 10px 7.5px 0;
+           border-color: transparent var(--pf-calendar-header-left-arrow-color, #fff) transparent transparent;
+           left: 20px;
+       }
+
+       .material-calendar .right {
+           border-width: 7.5px 0 7.5px 10px;
+           border-color: transparent transparent transparent var(--pf-calendar-header-right-arrow-color, #fff);
+           right: 20px;
+       }
+
+       .month {
+           /*overflow: hidden;*/
+           opacity: 0;
+       }
+
+       .month.new {
+           -webkit-animation: fadeIn 1s ease-out;
+           opacity: 1;
+       }
+
+       .month.in.next {
+           -webkit-animation: moveFromTopFadeMonth .4s ease-out;
+           -moz-animation: moveFromTopFadeMonth .4s ease-out;
+           animation: moveFromTopFadeMonth .4s ease-out;
+           opacity: 1;
+       }
+
+       .month.out.next {
+           -webkit-animation: moveToTopFadeMonth .4s ease-in;
+           -moz-animation: moveToTopFadeMonth .4s ease-in;
+           animation: moveToTopFadeMonth .4s ease-in;
+           opacity: 1;
+       }
+
+       .month.in.prev {
+           -webkit-animation: moveFromBottomFadeMonth .4s ease-out;
+           -moz-animation: moveFromBottomFadeMonth .4s ease-out;
+           animation: moveFromBottomFadeMonth .4s ease-out;
+           opacity: 1;
+       }
+
+       .month.out.prev {
+           -webkit-animation: moveToBottomFadeMonth .4s ease-in;
+           -moz-animation: moveToBottomFadeMonth .4s ease-in;
+           animation: moveToBottomFadeMonth .4s ease-in;
+           opacity: 1;
+       }
+
+       .classic-calendar  .week {
+           background: var(--pf-calendar-week-bg, #4A4A4A);
+       }
+
+       .classic-calendar  .day {
+           display: inline-block;
+           width: 60px;
+           padding: 10px;
+           text-align: center;
+           vertical-align: top;
+           cursor: pointer;
+           color: var(--pf-calendar-day-color, black);
+           background: var(--pf-calendar-day-bg, #4A4A4A);
+           position: relative;
+           z-index: 100;
+       }
+       .material-calendar  .week {
+           background: var(--pf-calendar-week-bg, #fff);
+       }
+
+       .material-calendar  .day {
+           display: inline-block;
+           width: 60px;
+           padding: 10px;
+           text-align: center;
+           vertical-align: top;
+           cursor: pointer;
+           color: var(--pf-calendar-day-color, black);
+           background: var(--pf-calendar-day-bg, #fff);
+           position: relative;
+           z-index: 100;
+       }
+
+       .classic-calendar .day.other {
+           color: var(--pf-calendar-other-day-color, rgba(255, 255, 255, .3));
+       }
+
+       .classic-calendar .day.today {
+           color: var(--pf-calendar-today-color, rgba(156, 202, 235, 1));
+       }
+
+       .classic-calendar .day-name {
+           font-size: 9px;
+           text-transform: uppercase;
+           margin-bottom: 5px;
+           color: var(--pf-calendar-day-name-color, rgba(255, 255, 255, .5));
+           letter-spacing: .7px;
+       }
+  .material-calendar .day.other {
+           color: var(--pf-calendar-other-day-color, rgba(255, 255, 255, .3));
+       }
+
+       .material-calendar .day.today {
+           color: var(--pf-calendar-today-color, #009688);
+       }
+
+       .material-calendar .day-name {
+           font-size: 9px;
+           text-transform: uppercase;
+           margin-bottom: 5px;
+           color: var(--pf-calendar-day-name-color, grey);
+           letter-spacing: .7px;
+       }
+
+       .day-number {
+           font-size: 24px;
+           letter-spacing: 1.5px;
+       }
+
+       .day .day-events {
+           list-style: none;
+           margin-top: 3px;
+           text-align: center;
+           height: 12px;
+           line-height: 6px;
+           overflow: hidden;
+       }
+
+       .day .day-events span {
+           vertical-align: top;
+           display: inline-block;
+           padding: 0;
+           margin: 0;
+           width: 5px;
+           height: 5px;
+           line-height: 5px;
+           margin: 0 1px;
+       }
+
+       .blue {
+           background: rgba(156, 202, 235, 1);
+       }
+
+       .orange {
+           background: rgba(247, 167, 0, 1);
+       }
+
+       .green {
+           background: rgba(153, 198, 109, 1);
+       }
+
+       .yellow {
+           background: rgba(249, 233, 0, 1);
+       }
+
+       .classic-calendar .details {
+           position: relative;
+           width: 420px;
+           height: 75px;
+           background: var(--pf-calendar-event-detail-bg, rgba(164, 164, 164, 1));
+           margin-top: 5px;
+           border-radius: 4px;
+       }
+ .material-calendar .details {
+           position: relative;
+           width: 420px;
+           height: 75px;
+           background: var(--pf-calendar-event-detail-bg, #009688);
+           margin-top: 5px;
+           border-radius: 4px;
+       }
+
+       .details.in {
+           -webkit-animation: moveFromTopFade .5s ease both;
+           -moz-animation: moveFromTopFade .5s ease both;
+           animation: moveFromTopFade .5s ease both;
+       }
+
+       .details.out {
+           -webkit-animation: moveToTopFade .5s ease both;
+           -moz-animation: moveToTopFade .5s ease both;
+           animation: moveToTopFade .5s ease both;
+       }
+
+       .classic-calendar   .arrow {
+           position: absolute;
+           top: -5px;
+           left: 50%;
+           margin-left: -2px;
+           width: 0px;
+           height: 0px;
+           border-style: solid;
+           border-width: 0 5px 5px 5px;
+           border-color: transparent transparent var(--pf-calendar-event-detail-bg, rgba(164, 164, 164, 1)) transparent;
+           transition: all 0.7s ease;
+       }
+       .material-calendar   .arrow {
+           position: absolute;
+           top: -5px;
+           left: 50%;
+           margin-left: -2px;
+           width: 0px;
+           height: 0px;
+           border-style: solid;
+           border-width: 0 5px 5px 5px;
+           border-color: transparent transparent var(--pf-calendar-event-detail-bg,#009688) transparent;
+           transition: all 0.7s ease;
+       }
+
+       .events {
+           height: 75px;
+           padding: 7px 0;
+           overflow-y: auto;
+           overflow-x: hidden;
+       }
+
+       .events.in {
+           -webkit-animation: fadeIn .3s ease both;
+           -moz-animation: fadeIn .3s ease both;
+           animation: fadeIn .3s ease both;
+       }
+
+       .events.in {
+           -webkit-animation-delay: .3s;
+           -moz-animation-delay: .3s;
+           animation-delay: .3s;
+       }
+
+       .details.out .events {
+           -webkit-animation: fadeOutShrink .4s ease both;
+           -moz-animation: fadeOutShink .4s ease both;
+           animation: fadeOutShink .4s ease both;
+       }
+
+       .events.out {
+           -webkit-animation: fadeOut .3s ease both;
+           -moz-animation: fadeOut .3s ease both;
+           animation: fadeOut .3s ease both;
+       }
+
+       .event {
+           font-size: 16px;
+           line-height: 22px;
+           letter-spacing: .5px;
+           padding: 2px 16px;
+           vertical-align: top;
+       }
 
        .dltEvent {
            width:25px;
@@ -322,35 +411,35 @@ Custom property                         | Description                           
            cursor: pointer;
            display: var(--pf-calendar-deletebutton-disply, inline);
        }
-      
-      .editEvent {
-          width:25px;
-          height:25px;
 
-margin:2px;
-          /*width of the image*/
-          background: url(images/img_edit.png) left top no-repeat;
-          float: right;
-          cursor: pointer;
-        display: var(--pf-calendar-editbutton-disply, inline);
-      }
+       .editEvent {
+           width:25px;
+           height:25px;
 
-      
-      .event-category {
-        height: 10px;
-        width: 10px;
-        display: inline-block;
-        margin: 6px 0 0;
-        vertical-align: top;
-      }
-      
-      .event span {
-        display: inline-block;
-        padding: 0 0 0 7px;
-        cursor: pointer;
-          color: var(--pf-calendar-event-color,black);
-      }
-       .numberCircle {
+           margin:2px;
+           /*width of the image*/
+           background: url(images/img_edit.png) left top no-repeat;
+           float: right;
+           cursor: pointer;
+           display: var(--pf-calendar-editbutton-disply, inline);
+       }
+
+
+       .event-category {
+           height: 10px;
+           width: 10px;
+           display: inline-block;
+           margin: 6px 0 0;
+           vertical-align: top;
+       }
+
+       .classic-calendar  .event span {
+           display: inline-block;
+           padding: 0 0 0 7px;
+           cursor: pointer;
+           color: var(--pf-calendar-event-color,black);
+       }
+       .classic-calendar  .numberCircle {
            border-radius: 50%;
            behavior: url(PIE.htc); /* remove if you don't care about IE8 */
 
@@ -366,292 +455,298 @@ margin:2px;
            letter-spacing: 1.5px;
 
        }
-      .addbutton {
-        margin: 8px 16px;
-          width:25px;
-          height:25px;
-
-
-          /*width of the image*/
-          background: url(images/ic_add.png) left top no-repeat;
-
-
-
-        display: var(--pf-calendar-addbutton-disply, inline-block);
-        cursor: pointer;
-
-      }
-      
-      .addbutton:hover {
-        background-color: var(--pf-calendar-addevent-button-hover-color, rgba(170, 170, 170, 1));
-      }
-      
-      .addbutton:active {
-        position: relative;
-        top: 1px;
-      }
-      
-      .legend {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 30px;
-        background: var(--pf-calendar-legend-bg, rgba(60, 60, 60, 1));
-        line-height: 30px;
-      }
-      
-      .entry {
-        position: relative;
-        padding: 0 0 0 25px;
-        font-size: 13px;
-        display: inline-block;
-        line-height: 30px;
-        background: transparent;
-      }
-      
-      .entry:after {
-        position: absolute;
-        content: '';
-        height: 5px;
-        width: 5px;
-        top: 12px;
-        left: 14px;
-      }
-      
-      .entry.blue:after {
-        background: rgba(156, 202, 235, 1);
-      }
-      
-      .entry.orange:after {
-        background: rgba(247, 167, 0, 1);
-      }
-      
-      .entry.green:after {
-        background: rgba(153, 198, 109, 1);
-      }
-      
-      .entry.yellow:after {
-        background: rgba(249, 233, 0, 1);
-      }
-      /* Animations are cool!  */
-      
-      @-webkit-keyframes moveFromTopFade {
-        from {
-          opacity: .3;
-          height: 0px;
-          margin-top: 0px;
-          -webkit-transform: translateY(-100%);
-        }
-      }
-      
-      @-moz-keyframes moveFromTopFade {
-        from {
-          height: 0px;
-          margin-top: 0px;
-          -moz-transform: translateY(-100%);
-        }
-      }
-      
-      @keyframes moveFromTopFade {
-        from {
-          height: 0px;
-          margin-top: 0px;
-          transform: translateY(-100%);
-        }
-      }
-      
-      @-webkit-keyframes moveToTopFade {
-        to {
-          opacity: .3;
-          height: 0px;
-          margin-top: 0px;
-          opacity: 0.3;
-          -webkit-transform: translateY(-100%);
-        }
-      }
-      
-      @-moz-keyframes moveToTopFade {
-        to {
-          height: 0px;
-          -moz-transform: translateY(-100%);
-        }
-      }
-      
-      @keyframes moveToTopFade {
-        to {
-          height: 0px;
-          transform: translateY(-100%);
-        }
-      }
-      
-      @-webkit-keyframes moveToTopFadeMonth {
-        to {
-          opacity: 0;
-          -webkit-transform: translateY(-30%) scale(.95);
-        }
-      }
-      
-      @-moz-keyframes moveToTopFadeMonth {
-        to {
-          opacity: 0;
-          -moz-transform: translateY(-30%);
-        }
-      }
-      
-      @keyframes moveToTopFadeMonth {
-        to {
-          opacity: 0;
-          -moz-transform: translateY(-30%);
-        }
-      }
-      
-      @-webkit-keyframes moveFromTopFadeMonth {
-        from {
-          opacity: 0;
-          -webkit-transform: translateY(30%) scale(.95);
-        }
-      }
-      
-      @-moz-keyframes moveFromTopFadeMonth {
-        from {
-          opacity: 0;
-          -moz-transform: translateY(30%);
-        }
-      }
-      
-      @keyframes moveFromTopFadeMonth {
-        from {
-          opacity: 0;
-          -moz-transform: translateY(30%);
-        }
-      }
-      
-      @-webkit-keyframes moveToBottomFadeMonth {
-        to {
-          opacity: 0;
-          -webkit-transform: translateY(30%) scale(.95);
-        }
-      }
-      
-      @-moz-keyframes moveToBottomFadeMonth {
-        to {
-          opacity: 0;
-          -webkit-transform: translateY(30%);
-        }
-      }
-      
-      @keyframes moveToBottomFadeMonth {
-        to {
-          opacity: 0;
-          -webkit-transform: translateY(30%);
-        }
-      }
-      
-      @-webkit-keyframes moveFromBottomFadeMonth {
-        from {
-          opacity: 0;
-          -webkit-transform: translateY(-30%) scale(.95);
-        }
-      }
-      
-      @-moz-keyframes moveFromBottomFadeMonth {
-        from {
-          opacity: 0;
-          -webkit-transform: translateY(-30%);
-        }
-      }
-      
-      @keyframes moveFromBottomFadeMonth {
-        from {
-          opacity: 0;
-          -webkit-transform: translateY(-30%);
-        }
-      }
-      
-      @-webkit-keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-      }
-      
-      @-moz-keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-      }
-      
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-      }
-      
-      @-webkit-keyframes fadeOut {
-        to {
-          opacity: 0;
-        }
-      }
-      
-      @-moz-keyframes fadeOut {
-        to {
-          opacity: 0;
-        }
-      }
-      
-      @keyframes fadeOut {
-        to {
-          opacity: 0;
-        }
-      }
-      
-      @-webkit-keyframes fadeOutShink {
-        to {
-          opacity: 0;
-          padding: 0px;
-          height: 0px;
-        }
-      }
-      
-      @-moz-keyframes fadeOutShink {
-        to {
-          opacity: 0;
-          padding: 0px;
-          height: 0px;
-        }
-      }
-      
-      @keyframes fadeOutShink {
-        to {
-          opacity: 0;
-          padding: 0px;
-          height: 0px;
-        }
-      }
-       .material-calendar{
-           font-family: 'Roboto Condensed', sans-serif;
-           --pf-calendar-height:630px;
-           --pf-calendar-bg-color:#fff;
-           --pf-calendar-header-background:#009688;
-           --pf-calendar-month-title-color:#fff;
-           --pf-calendar-header-right-arrow-color:#fff;
-           --pf-calendar-header-left-arrow-color:#fff;
-           --pf-calendar-week-bg:#fff;
-           --pf-calendar-day-bg:#fff;
-           --pf-calendar-today-color:#009688;
-           --pf-calendar-day-name-color:grey;
-           --pf-calendar-event-detail-bg:#009688;
-           --pf-calendar-event-color:#fff;
-           --pf-calendar-addevent-button-bg-color:#fff;
-           --pf-calendar-addevent-button-hover-color:#009688;
-
-           --pf-calendar-legend-bg:#009688;
-           --pf-calendar-header-height:111px;
-           --pf-calendar-month-title-font-size:36px;
-           --pf-calendar-month-title-line-height:113px;
-
-           --pf-calendar-selected-date-bg:#009688;
-           --pf-calendar-selected-date-color:#fff;
+       .material-calendar .event span {
+           display: inline-block;
+           padding: 0 0 0 7px;
+           cursor: pointer;
+           color: var(--pf-calendar-event-color,#fff);
        }
+       .material-calendar  .numberCircle {
+           border-radius: 50%;
+           behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+
+           width: 36px;
+           height: 36px;
+
+
+           background: var(--pf-calendar-selected-date-bg,#009688);
+           border: 2px solid transparent;
+           color: var(--pf-calendar-selected-date-color,#fff);
+           text-align: center;
+           font-size: 24px;
+           letter-spacing: 1.5px;
+
+       }
+       .addbutton {
+           margin: 8px 16px;
+           width:25px;
+           height:25px;
+
+
+           /*width of the image*/
+           background: url(images/ic_add.png) left top no-repeat;
+
+
+
+           display: var(--pf-calendar-addbutton-disply, inline-block);
+           cursor: pointer;
+
+       }
+
+       .addbutton:hover {
+           background-color: var(--pf-calendar-addevent-button-hover-color, rgba(170, 170, 170, 1));
+       }
+
+       .addbutton:active {
+           position: relative;
+           top: 1px;
+       }
+
+      .classic-calendar .legend {
+           position: absolute;
+           bottom: 0;
+           width: 100%;
+           height: 30px;
+           background: var(--pf-calendar-legend-bg, rgba(60, 60, 60, 1));
+           line-height: 30px;
+       }
+       .material-calendar .legend {
+           position: absolute;
+           bottom: 0;
+           width: 100%;
+           height: 30px;
+           background: var(--pf-calendar-legend-bg, #009688);
+           line-height: 30px;
+       }
+
+       .entry {
+           position: relative;
+           padding: 0 0 0 25px;
+           font-size: 13px;
+           display: inline-block;
+           line-height: 30px;
+           background: transparent;
+       }
+
+       .entry:after {
+           position: absolute;
+           content: '';
+           height: 5px;
+           width: 5px;
+           top: 12px;
+           left: 14px;
+       }
+
+       .entry.blue:after {
+           background: rgba(156, 202, 235, 1);
+       }
+
+       .entry.orange:after {
+           background: rgba(247, 167, 0, 1);
+       }
+
+       .entry.green:after {
+           background: rgba(153, 198, 109, 1);
+       }
+
+       .entry.yellow:after {
+           background: rgba(249, 233, 0, 1);
+       }
+       /* Animations are cool!  */
+
+       @-webkit-keyframes moveFromTopFade {
+           from {
+               opacity: .3;
+               height: 0px;
+               margin-top: 0px;
+               -webkit-transform: translateY(-100%);
+           }
+       }
+
+       @-moz-keyframes moveFromTopFade {
+           from {
+               height: 0px;
+               margin-top: 0px;
+               -moz-transform: translateY(-100%);
+           }
+       }
+
+       @keyframes moveFromTopFade {
+           from {
+               height: 0px;
+               margin-top: 0px;
+               transform: translateY(-100%);
+           }
+       }
+
+       @-webkit-keyframes moveToTopFade {
+           to {
+               opacity: .3;
+               height: 0px;
+               margin-top: 0px;
+               opacity: 0.3;
+               -webkit-transform: translateY(-100%);
+           }
+       }
+
+       @-moz-keyframes moveToTopFade {
+           to {
+               height: 0px;
+               -moz-transform: translateY(-100%);
+           }
+       }
+
+       @keyframes moveToTopFade {
+           to {
+               height: 0px;
+               transform: translateY(-100%);
+           }
+       }
+
+       @-webkit-keyframes moveToTopFadeMonth {
+           to {
+               opacity: 0;
+               -webkit-transform: translateY(-30%) scale(.95);
+           }
+       }
+
+       @-moz-keyframes moveToTopFadeMonth {
+           to {
+               opacity: 0;
+               -moz-transform: translateY(-30%);
+           }
+       }
+
+       @keyframes moveToTopFadeMonth {
+           to {
+               opacity: 0;
+               -moz-transform: translateY(-30%);
+           }
+       }
+
+       @-webkit-keyframes moveFromTopFadeMonth {
+           from {
+               opacity: 0;
+               -webkit-transform: translateY(30%) scale(.95);
+           }
+       }
+
+       @-moz-keyframes moveFromTopFadeMonth {
+           from {
+               opacity: 0;
+               -moz-transform: translateY(30%);
+           }
+       }
+
+       @keyframes moveFromTopFadeMonth {
+           from {
+               opacity: 0;
+               -moz-transform: translateY(30%);
+           }
+       }
+
+       @-webkit-keyframes moveToBottomFadeMonth {
+           to {
+               opacity: 0;
+               -webkit-transform: translateY(30%) scale(.95);
+           }
+       }
+
+       @-moz-keyframes moveToBottomFadeMonth {
+           to {
+               opacity: 0;
+               -webkit-transform: translateY(30%);
+           }
+       }
+
+       @keyframes moveToBottomFadeMonth {
+           to {
+               opacity: 0;
+               -webkit-transform: translateY(30%);
+           }
+       }
+
+       @-webkit-keyframes moveFromBottomFadeMonth {
+           from {
+               opacity: 0;
+               -webkit-transform: translateY(-30%) scale(.95);
+           }
+       }
+
+       @-moz-keyframes moveFromBottomFadeMonth {
+           from {
+               opacity: 0;
+               -webkit-transform: translateY(-30%);
+           }
+       }
+
+       @keyframes moveFromBottomFadeMonth {
+           from {
+               opacity: 0;
+               -webkit-transform: translateY(-30%);
+           }
+       }
+
+       @-webkit-keyframes fadeIn {
+           from {
+               opacity: 0;
+           }
+       }
+
+       @-moz-keyframes fadeIn {
+           from {
+               opacity: 0;
+           }
+       }
+
+       @keyframes fadeIn {
+           from {
+               opacity: 0;
+           }
+       }
+
+       @-webkit-keyframes fadeOut {
+           to {
+               opacity: 0;
+           }
+       }
+
+       @-moz-keyframes fadeOut {
+           to {
+               opacity: 0;
+           }
+       }
+
+       @keyframes fadeOut {
+           to {
+               opacity: 0;
+           }
+       }
+
+       @-webkit-keyframes fadeOutShink {
+           to {
+               opacity: 0;
+               padding: 0px;
+               height: 0px;
+           }
+       }
+
+       @-moz-keyframes fadeOutShink {
+           to {
+               opacity: 0;
+               padding: 0px;
+               height: 0px;
+           }
+       }
+
+       @keyframes fadeOutShink {
+           to {
+               opacity: 0;
+               padding: 0px;
+               height: 0px;
+           }
+       }
+
     </style>
 
     <div class$="{{_getClasses('k')}}" id="calendar"></div>
@@ -1095,6 +1190,11 @@ margin:2px;
 
         _getClasses(e) {
             var classes = this.calendarstyle;
+            if(this.calendarstyle=="material-calendar"||this.calendarstyle=="classic-calendar"){
+
+            }else {
+                this.calendarstyle=="material-calendar"
+            }
             return classes;
         }
       ready() {
