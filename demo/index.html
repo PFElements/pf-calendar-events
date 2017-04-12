@@ -12,6 +12,7 @@
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../pf-calendar-events.html">
 
+
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
   </head>
@@ -27,13 +28,14 @@
             }
 
           </style>
-          <pf-calendar-events id="pf-calendar"
 
-                       data='[
-                          { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
-                          { "eventName": "Appoint ment With Dr David", "calendar": "Medical", "color": "yellow","date":"1499185140000" },
-                          { "eventName": "Gev", "calendar": "sport", "color": "blue","date":"1491581940000" },
-                          { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
+
+          <pf-calendar-events id="pf-calendar"
+ data='[
+                          { "eventName": "Lunch Meeting w/ Mark", "category": "Work", "color": "orange","date":"1491322091394" },
+                          { "eventName": "Appoint ment With Dr David", "category": "Medical", "color": "yellow","date":"1499185140000" },
+                          { "eventName": "Gev", "category": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Public Holiday", "category": "holiday", "color": "green","date":"1494173940000" }]'
           >
 
           </pf-calendar-events>

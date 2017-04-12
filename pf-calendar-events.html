@@ -1,11 +1,10 @@
 
 <link rel="import" href="../polymer/polymer.html">
-
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">
 
 <!--
-
 @demo demo/index.html
+
 ### Styling
 The following custom properties and mixins are available for styling:
 
@@ -38,9 +37,6 @@ Custom property                         | Description                           
 `--pf-calendar-deletebutton-disply`     |  to hide button set "none"              |inline
 `--pf-calendar-editbutton-disply`       |  to hide button set "none"              |inline
 `--pf-calendar-legend-bg`               |  Background color of legend bar         | rgba(60, 60, 60, 1)
-
-
-`pf-calendar-events`
 
 
 
@@ -1046,7 +1042,7 @@ margin:2px;
         var self = this;
         var legend = this._createElement('div', 'legend');
         var calendars = this.events.map(function (e) {
-          return e.calendar + '|' + e.color;
+          return e.category + '|' + e.color;
         }).reduce(function (memo, e) {
           if (memo.indexOf(e) === -1) {
             memo.push(e);
@@ -1124,7 +1120,7 @@ margin:2px;
         var eve = e.detail.events;
       }
       connectedCallback() {
-        /*
+          /*
 var data= [
   { eventName: 'Lunch Meeting', calendar: 'Work', color: 'orange',date:'1491322091394' },
   { eventName: 'Physio Appointment', calendar: 'health', color: 'blue',date:'1499185140000' },
@@ -1148,13 +1144,17 @@ var data= [
   { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
 
 ];*/
-        if (this.date) {
+        if (
+                this.date) {
           this.today = moment(parseInt(this.date));
         } else {
           this.today = moment();
         }
+if(this.data){
+        this.calendar = this._Calendar(this.$.calendar, this._convertMillsDate(
+                this.data));
+       }
 
-        this.calendar = this._Calendar(this.$.calendar, this._convertMillsDate(this.data));
         //  window.Calendar = Calendar;
         //   drawCal(this.$.calendar,this);
         //   var el2 = new PfCalendar(this.$.calendar,data);
