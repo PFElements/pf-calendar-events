@@ -762,7 +762,8 @@ Custom property                         | Description                           
         return {
 
           data: {
-            type: Object
+            type: Object,
+
           },
           calendar: {
             type: Object
@@ -770,8 +771,11 @@ Custom property                         | Description                           
           today: {
             type: Object
           },
+
           date: {
-            type: Object
+            type: Object,
+
+
           },
             calendarstyle:{
                 type:String,
@@ -781,6 +785,7 @@ Custom property                         | Description                           
             }
         };
       }
+
       _Calendar(selector, event) {
 
         this.el = selector;
@@ -1180,6 +1185,10 @@ Custom property                         | Description                           
         return ele;
       }
       _convertMillsDate(data) {
+if(!data){
+
+     data=JSON.parse('[{ "eventName": "Lunch Meeting w/ Mark", "category": "Work", "color": "orange","date":"14913220913940" }]');
+}
         data.forEach(function (ev) {
           ev.date = moment(parseInt(ev.date))
 
@@ -1251,10 +1260,9 @@ var data= [
         } else {
           this.today = moment();
         }
-if(this.data){
+
         this.calendar = this._Calendar(this.$.calendar, this._convertMillsDate(
                 this.data));
-       }
 
         //  window.Calendar = Calendar;
         //   drawCal(this.$.calendar,this);
