@@ -58,6 +58,7 @@ Custom property                         | Description                           
                 box-sizing: border-box;
             }
 
+
             body {
                 overflow: hidden;
                 font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -800,8 +801,12 @@ Custom property                         | Description                           
                     this.today = moment();
                 }
                 this.$.calendar.innerHTML = '';
-                this.calendar = this._Calendar(this.$.calendar, this._convertMillsDate(
-                        this.data));
+                if(!this.data){
+//dummy data
+                    this.data=JSON.parse('[{ "eventName": "Lunch Meeting w/ Mark", "category": "Work", "color": "orange","date":"14913220913940" }]');
+                }
+                this.calendar = this._Calendar(this.$.calendar,
+                        this.data);
             }
             _Calendar(selector, event) {
 
@@ -992,6 +997,18 @@ Custom property                         | Description                           
                 var self = this;
                 if (day.month() === this.current.month()) {
                     var todaysEvents = this.events.reduce(function (memo, ev) {
+                       //  ev.date = ev.date.replace(/['"]+/g, '');
+                        var dateType=typeof ev.date
+if (dateType=="string"){
+
+
+    ev.date=JSON.parse(ev.date);
+    var dateType=typeof ev.date
+}
+                        if(dateType=="number") {
+                            ev.date = moment(parseInt(ev.date))
+                            //      ev.isDateFormat=true
+                        }
                         if (ev.date.isSame(day, 'day')) {
                             memo.push(ev);
                         }
@@ -1202,14 +1219,16 @@ Custom property                         | Description                           
                 return ele;
             }
             _convertMillsDate(data) {
+
+
                 if(!data){
 
                     data=JSON.parse('[{ "eventName": "Lunch Meeting w/ Mark", "category": "Work", "color": "orange","date":"14913220913940" }]');
                 }
                 data.forEach(function (ev) {
-                    if(!ev.isDateFormat) {
+                    if(typeof ev.date=="number") {
                         ev.date = moment(parseInt(ev.date))
-                        ev.isDateFormat=true
+                        //      ev.isDateFormat=true
                     }
                     //    ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
                 });
