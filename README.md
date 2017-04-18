@@ -22,6 +22,13 @@ An Advanced/composite Polymer 2.0 based custom elements that can be used to set 
 |--------------|------------------------|--------------|--------------|
 | [pf-calendar-events](https://github.com/PFElements/pf-calendar-events) | [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events)](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events) | [![npm version](https://badge.fury.io/js/pf-calendar-events.svg)](https://www.npmjs.com/package/pf-calendar-events) |[![Build Status](https://travis-ci.org/PFElements/pf-calendar-events.svg?branch=master)](https://travis-ci.org/PFElements/pf-calendar-events) | 
 
+## Learn more
+
+See the list of elements, demos, and documentation by browsing this collection on webcomponents.org:
+
+### [Take me to webcomponents.org ›](https://www.webcomponents.org/element/PFElements/pf-calendar-events)
+
+---
 # Example
 <!---
 ```
@@ -36,14 +43,6 @@ An Advanced/composite Polymer 2.0 based custom elements that can be used to set 
 -->
 ```html
 
-
-## Learn more
-
-See the list of elements, demos, and documentation by browsing this collection on webcomponents.org:
-
-### [Take me to webcomponents.org ›](https://www.webcomponents.org/element/PFElements/pf-pageindicator)
-
----
 
 
  <pf-calendar-events
