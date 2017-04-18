@@ -2,6 +2,8 @@
 # pf-elements
 A Polymer 2.0 based collection of reusable web components 
 
+[![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
 
 ## Demo
@@ -46,8 +48,8 @@ See the list of elements, demos, and documentation by browsing this collection o
  <pf-calendar-events
                   data='[
                           { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
-                          { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1499185140000" },
-                          { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Giants vs Packers", "calendar": "sport", "color": "blue","date":"1499185140000" },
+                          { "eventName": "Soccer", "calendar": "sport", "color": "blue","date":"1491581940000" },
                           { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
           >
 
