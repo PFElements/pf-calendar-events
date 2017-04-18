@@ -18,8 +18,9 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 
 An Advanced/composite Polymer 2.0 based custom elements that can be used to set Events/appointments/meetings in a calendar. 
 
-
-[pf-calendar-events](https://github.com/PFElements/pf-calendar-events) [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events.svg)](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events)  [![Build Status](https://travis-ci.org/PFElements/pf-calendar-events.svg?branch=master)](https://travis-ci.org/PFElements/pf-calendar-events) 
+| Element Name | Latest Version (Bower) | Npm version  | Build Status |
+|--------------|------------------------|--------------|--------------|
+| [pf-calendar-events](https://github.com/PFElements/pf-calendar-events) | [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events)](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events) | [![npm version](https://badge.fury.io/js/pf-calendar-events.svg)](https://www.npmjs.com/package/pf-calendar-events) |[![Build Status](https://travis-ci.org/PFElements/pf-calendar-events.svg?branch=master)](https://travis-ci.org/PFElements/pf-calendar-events) | 
 
 # Example
 <!---
@@ -119,6 +120,12 @@ Your application is already set up to be tested via [web-component-tester](https
 
 Comments, questions, suggestions, issues, and pull requests are all welcome.
 
+### Get in touch with the team
+
+Joing us at [![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+- [Twitter](<a href="https://twitter.com/polymerjs" class="twitter-follow-button" data-show-count="false">Follow @polymerjs</a>)
+- [Facebook] (https://www.facebook.com/polymerjs)
 
 ### Some ways to help:
 
