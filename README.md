@@ -7,8 +7,9 @@ A Polymer 2.0 based collection of reusable web components
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
 
 ## Demo
-[Click here for docs & demo](https://github.com/PFElements/pf-calendar-events/blob/master/demo/index.html)
-
+[Click here for docs & demo](https://www.webcomponents.org/element/PFElements/pf-calendar-events/demo/demo/index.html)
+_[Demo and API docs](https://elements.polymer-project.org/elements/PFElements/pf-calendar-events)_
+_[Demo and API docs 2](https://elements.polymer-project.org/elements/pf-calendar-events)_
 
 ## Install the Polymer-CLI
 
