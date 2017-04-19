@@ -2,16 +2,48 @@
 # pf-elements
 A Polymer 2.0 based collection of reusable web components 
 
+[![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
 
 ## Demo
-[Click here for docs & demo](https://github.com/PFElements/pf-calendar-events/blob/master/demo/index.html)
-
+[Click here for docs & demo](https://pfelements.github.io/pf-calendar-events/components/pf-calendar-events/demo/index.html)
+_[Demo and API docs](https://elements.polymer-project.org/elements/PFElements/pf-calendar-events)_
+_[Demo and API docs 2](https://elements.polymer-project.org/elements/pf-calendar-events)_
 
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
-## Example
+
+# PF Calendar Events
+
+An Advanced/composite Polymer 2.0 based custom elements that can be used to set Events/appointments/meetings in a calendar. 
+
+| Element Name | Latest Version (Bower) | Npm version  | Build Status |
+|--------------|------------------------|--------------|--------------|
+| [pf-calendar-events](https://github.com/PFElements/pf-calendar-events) | [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events)](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events) | [![npm version](https://badge.fury.io/js/pf-calendar-events.svg)](https://www.npmjs.com/package/pf-calendar-events) |[![Build Status](https://travis-ci.org/PFElements/pf-calendar-events.svg?branch=master)](https://travis-ci.org/PFElements/pf-calendar-events) | 
+
+## Learn more
+
+See the list of elements, demos, and documentation by browsing this collection on webcomponents.org:
+
+### [Take me to webcomponents.org ›](https://www.webcomponents.org/element/PFElements/pf-calendar-events)
+
+---
+# Customization and usage
+
+`<pf-calendar-events></pf-calendar-events>` can be customized in a number of ways
+
+## Customization of look and feel
+
+By default you have two general options
+
+a. material-calendar
+
+b. classic-calendar
+
+Once you decide you general look and feel then you can further customize the details, e.g. if you chose a Material Design look and feel and you want to change the width, hight, color etc. you can do that with the provided API. 
+#### material Calendar Example
 <!---
 ```
 <custom-element-demo>
@@ -25,27 +57,88 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 -->
 ```html
 
-# PF Calendar Events
-
-An Advanced/composite Polymer 2.0 based custom elements that can be used to set Events/appointments/meetings in a calendar. 
 
 
-[pf-calendar-events](https://github.com/PFElements/pf-calendar-events) [![GitHub version](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events.svg)](https://badge.fury.io/gh/PFElements%2Fpf-calendar-events)  [![Build Status](https://travis-ci.org/PFElements/pf-calendar-events.svg?branch=master)](https://travis-ci.org/PFElements/pf-calendar-events) 
 
-## Learn more
+ <pf-calendar-events
+                  calendarstyle="material-calendar"
+                  data='[
+                          { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
+                          { "eventName": "Giants vs Packers", "calendar": "sport", "color": "blue","date":"1499185140000" },
+                          { "eventName": "Soccer", "calendar": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
+          >
 
-See the list of elements, demos, and documentation by browsing this collection on webcomponents.org:
+          </pf-calendar-events>
+```
+#### Classic Calendar Example
+```html
+ <pf-calendar-events
+                  calendarstyle="classic-calendar"
+                  data='[
+                          { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
+                          { "eventName": "Giants vs Packers", "calendar": "sport", "color": "blue","date":"1499185140000" },
+                          { "eventName": "Soccer", "calendar": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
+          >
 
-### [Take me to webcomponents.org ›](https://www.webcomponents.org/element/PFElements/pf-pageindicator)
+          </pf-calendar-events>
+```
+default value of 'calendarstyle' is 'material-calendar'
+### Types of calendar
+You can define different types of calendar events (appointments, meetings, reminders, etc). e.g. you can define a "Sports" Calendar "Office Meeting" calendar, "Birthday Reminders" calendar. Distinct type of categories will appear in different colors.
 
----
+### CRUD operations
+
+Buttons / icons are provided to enable Adding, deleting or updating an event (meeting, reminder, appointment etc)
+Material based button and icons are provided to enable these operations.
+For firebase events data, please see our firebase element
+
+## Customization of Calendar Events/Data (your meetings, appointments, reminders etc)
+
+Of course if you cannot provide you own data then why even use a third party component, and you need events as well to notify you of the user interaction with the calendar
+
+This custom element provides you two generic ways that again can be further customized
+
+a. Data Through firebase custom element (Please see our firebase custom element that can be combined with this element to enable your data interaction from firebase
+
+b. By providing an array of data. (Calendar events, appointments, meetings, reminders etc.)
+
+### CRUD operations
+Our custom element provides a way to hook your CRUD operations into our calendar, it provides a number of API hooks/events to notify you about an operation that is performed on a certain event.
+
+
+Custom Event                     | Description                       
+---------------------------------|----------------------------------------
+`event-add`                      | Add event retuns current selected date ('e.detail.date'), fired when user press add event button  
+`event-edit`                     | Edit event retuns event ('e.detail.event'),fired when user press edit event button
+`event-delete`                   | Delete event retuns event ('e.detail.event'),fired when user press delete event button
+`event-select`                   | Event Select retuns event ('e.detail.event'),fired when user click on any event            
+`date-select`                    | Date Select retuns seleted date and events of date ('e.detail.date'and'e.detail.events'),fired when user click on any event             
+  
+
+
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="pf-calendar-events.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+
+
 
 
  <pf-calendar-events
                   data='[
                           { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
-                          { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1499185140000" },
-                          { "eventName": "WI vs Pak", "calendar": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Giants vs Packers", "calendar": "sport", "color": "blue","date":"1499185140000" },
+                          { "eventName": "Soccer", "calendar": "sport", "color": "blue","date":"1491581940000" },
                           { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
           >
 
@@ -115,6 +208,12 @@ Your application is already set up to be tested via [web-component-tester](https
 
 Comments, questions, suggestions, issues, and pull requests are all welcome.
 
+### Get in touch with the team
+
+Joing us at [![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+- [Twitter](<a href="https://twitter.com/polymerjs" class="twitter-follow-button" data-show-count="false">Follow @polymerjs</a>)
+- [Facebook] (https://www.facebook.com/polymerjs)
 
 ### Some ways to help:
 
