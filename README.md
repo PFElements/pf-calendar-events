@@ -37,7 +37,9 @@ See the list of elements, demos, and documentation by browsing this collection o
 ## Customization of look and feel
 
 By default you have two general options
+
 a. material-calendar
+
 b. classic-calendar
 
 Once you decide you general look and feel then you can further customize the details, e.g. if you chose a Material Design look and feel and you want to change the width, hight, color etc. you can do that with the provided API. 
@@ -58,14 +60,23 @@ Of course if you cannot provide you own data then why even use a third party com
 This custom element provides you two generic ways that again can be further customized
 
 a. Data Through firebase custom element (Please see our firebase custom element that can be combined with this element to enable your data interaction from firebase
+
 b. By providing an array of data. (Calendar events, appointments, meetings, reminders etc.)
 
 ### CRUD operations
 Our custom element provides a way to hook your CRUD operations into our calendar, it provides a number of API hooks/events to notify you about an operation that is performed on a certain event.
 
-a. Add Event (use this for adding an event, meeting, appointment, reminder etc)
-b. Update Event
-c. Delete Event
+a. Add Event (event-add) use this for adding an event, meeting, appointment, reminder etc
+
+b. Update Event (event-edit)
+
+c. Delete Event (event-delete)
+
+In addition two other events could be subscribed to notify you about the date or event selection. If a user taps of a date or if a user taps a certain events within a date.
+
+a. User selected a date (date-select)
+
+b. User selected an event (event-select)
 
 <!---
 ```
