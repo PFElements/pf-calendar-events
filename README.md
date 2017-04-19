@@ -30,7 +30,43 @@ See the list of elements, demos, and documentation by browsing this collection o
 ### [Take me to webcomponents.org ›](https://www.webcomponents.org/element/PFElements/pf-calendar-events)
 
 ---
-# Example
+# Customization and usage
+
+`<pf-calendar-events></pf-calendar-events>` can be customized in a number of ways
+
+## Customization of look and feel
+
+By default you have two general options
+a. material-calendar
+b. classic-calendar
+
+Once you decide you general look and feel then you can further customize the details, e.g. if you chose a Material Design look and feel and you want to change the width, hight, color etc. you can do that with the provided API. 
+
+### Types of calendar
+You can define different types of calendar events (appointments, meetings, reminders, etc). e.g. you can define a "Sports" Calendar "Office Meeting" calendar, "Birthday Reminders" calendar. Distinct type of categories will appear in different colors.
+
+### CRUD operations
+
+Buttons / icons are provided to enable Adding, deleting or updating an event (meeting, reminder, appointment etc)
+Material based button and icons are provided to enable these operations.
+For firebase events data, please see our firebase element
+
+## Customization of Calendar Events/Data (your meetings, appointments, reminders etc)
+
+Of course if you cannot provide you own data then why even use a third party component, and you need events as well to notify you of the user interaction with the calendar
+
+This custom element provides you two generic ways that again can be further customized
+
+a. Data Through firebase custom element (Please see our firebase custom element that can be combined with this element to enable your data interaction from firebase
+b. By providing an array of data. (Calendar events, appointments, meetings, reminders etc.)
+
+### CRUD operations
+Our custom element provides a way to hook your CRUD operations into our calendar, it provides a number of API hooks/events to notify you about an operation that is performed on a certain event.
+
+a. Add Event (use this for adding an event, meeting, appointment, reminder etc)
+b. Update Event
+c. Delete Event
+
 <!---
 ```
 <custom-element-demo>
@@ -43,6 +79,7 @@ See the list of elements, demos, and documentation by browsing this collection o
 ```
 -->
 ```html
+
 
 
 
