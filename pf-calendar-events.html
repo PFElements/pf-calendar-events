@@ -823,7 +823,7 @@ Custom property                         | Description                           
                 if (current) {
                     var self = this;
                     window.setTimeout(function () {
-                        self.openDay(current);
+                        self._openDay(current);
                     }, 500);
                 }
             }
@@ -887,9 +887,9 @@ Custom property                         | Description                           
                     this.oldMonth.addEventListener('webkitAnimationEnd', function () {
                         self.oldMonth.parentNode.removeChild(self.oldMonth);
                         self.month = self._createElement('div', 'month');
-                        self.backFill();
-                        self.currentMonth();
-                        self.fowardFill();
+                        self._backFill();
+                        self._currentMonth();
+                        self._fowardFill();
                         self.el.appendChild(self.month);
                         window.setTimeout(function () {
                             self.month.className = 'month in ' + (self.next ? 'next' : 'prev');
@@ -898,15 +898,15 @@ Custom property                         | Description                           
                 } else {
                     this.month = this._createElement('div', 'month');
                     this.el.appendChild(this.month);
-                    this.backFill();
-                    this.currentMonth();
-                    this.fowardFill();
+                    this._backFill();
+                    this._currentMonth();
+                    this._fowardFill();
                     this.month.className = 'month new';
                 }
             }
 
 
-            backFill() {
+            _backFill() {
 
                 var clone = this.current.clone();
                 var dayOfWeek = clone.day();
@@ -918,11 +918,11 @@ Custom property                         | Description                           
                 clone.subtract('days', dayOfWeek + 1);
 
                 for (var i = dayOfWeek; i > 0; i--) {
-                    this.drawDay(clone.add('days', 1));
+                    this._drawDay(clone.add('days', 1));
                 }
             }
 
-            fowardFill() {
+            _fowardFill() {
 
                 var clone = this.current.clone().add('months', 1).subtract('days', 1);
                 var dayOfWeek = clone.day();
@@ -932,23 +932,23 @@ Custom property                         | Description                           
                 }
 
                 for (var i = dayOfWeek; i < 6; i++) {
-                    this.drawDay(clone.add('days', 1));
+                    this._drawDay(clone.add('days', 1));
                 }
             }
 
 
-            currentMonth() {
+            _currentMonth() {
 
                 var clone = this.current.clone();
 
                 while (clone.month() === this.current.month()) {
-                    this.drawDay(clone);
+                    this._drawDay(clone);
                     clone.add('days', 1);
                 }
             }
 
 
-            getWeek(day) {
+            _getWeek(day) {
 
                 if (!this.week || day.day() === 0) {
                     this.week = this._createElement('div', 'week');
@@ -957,16 +957,16 @@ Custom property                         | Description                           
             }
 
 
-            drawDay(day) {
+            _drawDay(day) {
 
                 var self = this;
-                this.getWeek(day);
+                this._getWeek(day);
 
                 //Outer Day
-                var outer = this._createElement('div', this.getDayClass(day));
+                var outer = this._createElement('div', this._getDayClass(day));
                 if (day.month() == this.current.month()) {
                     outer.addEventListener('click', function () {
-                        self.openDay(this);
+                        self._openDay(this);
                         var currentSelected = self.shadowRoot.querySelector('.numberCircle');
                         if(currentSelected) {
                             currentSelected.className = "day-number"
@@ -985,7 +985,7 @@ Custom property                         | Description                           
 
                 //Events
                 var events = this._createElement('div', 'day-events');
-                this.drawEvents(day, events);
+                this._drawEvents(day, events);
 
                 outer.appendChild(name);
                 outer.appendChild(number);
@@ -993,7 +993,7 @@ Custom property                         | Description                           
                 this.week.appendChild(outer);
             }
 
-            drawEvents(day, element) {
+            _drawEvents(day, element) {
                 var self = this;
                 if (day.month() === this.current.month()) {
                     var todaysEvents = this.events.reduce(function (memo, ev) {
@@ -1022,7 +1022,7 @@ if (dateType=="string"){
                 }
             }
 
-            getDayClass(day,newClass) {
+            _getDayClass(day,newClass) {
                 var classes = ['day'];
                 if (day.month() !== this.current.month()) {
                     classes.push('other');
@@ -1039,7 +1039,7 @@ if (dateType=="string"){
                 var mevent = event
                 this.dispatchEvent(new CustomEvent('date-select', { detail: { date: d, events: eve } }));
             }
-            openDay(el) {
+            _openDay(el) {
                 var details, arrow;
                 var dayNumber = +el.querySelectorAll('.day-number')[0].innerText || +el.querySelectorAll('.day-number')[0].textContent;
                 var day = this.current.clone().date(dayNumber);
@@ -1086,7 +1086,7 @@ if (dateType=="string"){
                     return memo;
                 }, []);
                 this._daySelected(day, todaysEvents);
-                this.renderEvents(day, todaysEvents, details);
+                this._renderEvents(day, todaysEvents, details);
 
                 arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
             }
@@ -1108,7 +1108,7 @@ if (dateType=="string"){
                 var mEv = date;
                 this.dispatchEvent(new CustomEvent('event-add', { detail: { date: date } }));
             }
-            renderEvents(day, events, ele) {
+            _renderEvents(day, events, ele) {
                 var self = this;
                 //Remove any events in the current details element
                 var currentWrapper = ele.querySelector('.events');
@@ -1268,37 +1268,11 @@ if (dateType=="string"){
                 var eve = e.detail.events;
             }
             connectedCallback() {
-                /*
-                 var data= [
-                 { eventName: 'Lunch Meeting', calendar: 'Work', color: 'orange',date:'1491322091394' },
-                 { eventName: 'Physio Appointment', calendar: 'health', color: 'blue',date:'1499185140000' },
-                 { eventName: 'Appointment with Dr. John', calendar: 'health', color: 'blue',date:'1491581940000' },
-                 { eventName: 'Public Holiday', calendar: 'holiday', color: 'green',date:'1494173940000' }
 
-                 { eventName: 'Polymer Interview - Jr. Web Developer', calendar: 'Work', color: 'orange' },
-                 { eventName: 'Demo New App to the Board', calendar: 'Work', color: 'orange' },
-                 { eventName: 'Dinner w/ Marketing', calendar: 'Work', color: 'orange' },
-                 { eventName: 'Game vs Portalnd', calendar: 'Sports', color: 'blue' },
-                 { eventName: 'Game vs Houston', calendar: 'Sports', color: 'blue' },
-                 { eventName: 'Game vs Denver', calendar: 'Sports', color: 'blue' },
-                 { eventName: 'Game vs San Degio', calendar: 'Sports', color: 'blue' },
-                 { eventName: 'School Play', calendar: 'Kids', color: 'yellow' },
-                 { eventName: 'Parent/Teacher Conference', calendar: 'Kids', color: 'yellow' },
-                 { eventName: 'Pick up from Soccer Practice', calendar: 'Kids', color: 'yellow' },
-                 { eventName: 'Ice Cream Night', calendar: 'Kids', color: 'yellow' },
-                 { eventName: 'Free Tamale Night', calendar: 'Other', color: 'green' },
-                 { eventName: 'Bowling Team', calendar: 'Other', color: 'green' },
-                 { eventName: 'Teach Kids to Code', calendar: 'Other', color: 'green' },
-                 { eventName: 'Startup Weekend', calendar: 'Other', color: 'green' }
-
-                 ];*/
+                super.connectedCallback();
                 this._drawCalendar();
 
-                //  window.Calendar = Calendar;
-                //   drawCal(this.$.calendar,this);
-                //   var el2 = new PfCalendar(this.$.calendar,data);
-                //   var ele3="aa"
-                super.connectedCallback();
+
 
 
             }
