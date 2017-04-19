@@ -8,8 +8,6 @@ A Polymer 2.0 based collection of reusable web components
 
 ## Demo
 [Click here for docs & demo](https://pfelements.github.io/pf-calendar-events/components/pf-calendar-events/demo/index.html)
-_[Demo and API docs](https://elements.polymer-project.org/elements/PFElements/pf-calendar-events)_
-_[Demo and API docs 2](https://elements.polymer-project.org/elements/pf-calendar-events)_
 
 ## Install the Polymer-CLI
 
