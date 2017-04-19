@@ -8,6 +8,8 @@ A Polymer 2.0 based collection of reusable web components
 
 ## Demo
 [Click here for docs & demo](https://pfelements.github.io/pf-calendar-events/components/pf-calendar-events/demo/index.html)
+_[Demo and API docs](https://elements.polymer-project.org/elements/PFElements/pf-calendar-events)_
+_[Demo and API docs 2](https://elements.polymer-project.org/elements/pf-calendar-events)_
 
 ## Install the Polymer-CLI
 
@@ -41,7 +43,48 @@ a. material-calendar
 b. classic-calendar
 
 Once you decide you general look and feel then you can further customize the details, e.g. if you chose a Material Design look and feel and you want to change the width, hight, color etc. you can do that with the provided API. 
+#### material Calendar Example
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="pf-calendar-events.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
 
+
+
+
+ <pf-calendar-events
+                  calendarstyle="material-calendar"
+                  data='[
+                          { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
+                          { "eventName": "Giants vs Packers", "calendar": "sport", "color": "blue","date":"1499185140000" },
+                          { "eventName": "Soccer", "calendar": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
+          >
+
+          </pf-calendar-events>
+```
+#### Classic Calendar Example
+```html
+ <pf-calendar-events
+                  calendarstyle="classic-calendar"
+                  data='[
+                          { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
+                          { "eventName": "Giants vs Packers", "calendar": "sport", "color": "blue","date":"1499185140000" },
+                          { "eventName": "Soccer", "calendar": "sport", "color": "blue","date":"1491581940000" },
+                          { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
+          >
+
+          </pf-calendar-events>
+```
+default value of 'calendarstyle' is 'material-calendar'
 ### Types of calendar
 You can define different types of calendar events (appointments, meetings, reminders, etc). e.g. you can define a "Sports" Calendar "Office Meeting" calendar, "Birthday Reminders" calendar. Distinct type of categories will appear in different colors.
 
@@ -64,17 +107,16 @@ b. By providing an array of data. (Calendar events, appointments, meetings, remi
 ### CRUD operations
 Our custom element provides a way to hook your CRUD operations into our calendar, it provides a number of API hooks/events to notify you about an operation that is performed on a certain event.
 
-a. Add Event (event-add) use this for adding an event, meeting, appointment, reminder etc
 
-b. Update Event (event-edit)
+Custom Event                     | Description                       
+---------------------------------|----------------------------------------
+`event-add`                      | Add event retuns current selected date ('e.detail.date'), fired when user press add event button  
+`event-edit`                     | Edit event retuns event ('e.detail.event'),fired when user press edit event button
+`event-delete`                   | Delete event retuns event ('e.detail.event'),fired when user press delete event button
+`event-select`                   | Event Select retuns event ('e.detail.event'),fired when user click on any event            
+`date-select`                    | Date Select retuns seleted date and events of date ('e.detail.date'and'e.detail.events'),fired when user click on any event             
+  
 
-c. Delete Event (event-delete)
-
-In addition two other events could be subscribed to notify you about the date or event selection. If a user taps of a date or if a user taps a certain events within a date.
-
-a. User selected a date (date-select)
-
-b. User selected an event (event-select)
 
 <!---
 ```
