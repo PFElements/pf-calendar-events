@@ -71,6 +71,17 @@ Once you decide you general look and feel then you can further customize the det
           </pf-calendar-events>
 ```
 #### Classic Calendar Example
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="pf-calendar-events.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
 ```html
  <pf-calendar-events
                   calendarstyle="classic-calendar"
