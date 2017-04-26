@@ -1,0 +1,37 @@
+{
+  "name": "pf-calendar-events",
+  "version": "0.1.0",
+  "description": "Polymer 2.0 element based custom elements enabling CRUD operation for Calendar Events, appointments, meetings, reminders etc",
+  "main": "pf-calendar-events.html",
+  "repository": "PFElements/pf-calendar-events",
+  "keywords": [
+    "Polymer",
+    "Polymer 2.0",
+    "calendar",
+    "appointments",
+    "reminders",
+    "meetings",
+    "firebase",
+    "custom element",
+    "web component",
+    "polymerfire",
+    "dots"
+  ],
+  "authors": [
+    "Pixy Flux <info@pixyflux.com>"
+  ],
+  "homepage": "http://pixyflux.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PFElements/pf-calendar-events/issues"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
+    "web-component-tester": "v6.0.0-prerelease.5",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5"
+  },
+  "scripts": {
+    "test": "wct"
+  }
+}
