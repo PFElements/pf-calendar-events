@@ -61,11 +61,35 @@ Once you decide you general look and feel then you can further customize the det
 
  <pf-calendar-events
                   calendarstyle="material-calendar"
-                  data='[
-                          { "eventName": "Lunch Meeting w/ Mark", "calendar": "Work", "color": "orange","date":"1491322091394" },
-                          { "eventName": "Giants vs Packers", "calendar": "sport", "color": "blue","date":"1499185140000" },
-                          { "eventName": "Soccer", "calendar": "sport", "color": "blue","date":"1491581940000" },
-                          { "eventName": "Public Holiday", "calendar": "holiday", "color": "green","date":"1494173940000" }]'
+data='[
+                          { "eventName": "Lunch Meeting W/ Mark", "category": "Work", "color": "orange","date":"1491322091394" },
+                          { "eventName": "Rob Birthday  ", "category": "Birthday", "color": "blue","date":"1491322091394" },
+                          { "eventName": "Appointment With Dr David", "category": "Medical", "color": "yellow","date":"1491322091394" },
+                          { "eventName": "Public Holiday", "category": "holiday", "color": "green","date":"1492196400000" },
+                          { "eventName": "Due date of Project Dilivery", "category": "Work", "color": "orange","date":"1492455600000" },
+                          { "eventName": "Lunch Meeting W/ Mark", "category": "Work", "color": "orange","date":"1495322091394" },
+                          { "eventName": "Rob Birthday  ", "category": "Birthday", "color": "blue","date":"1495322091394" },
+                          { "eventName": "Appointment With Dr David", "category": "Medical", "color": "yellow","date":"1495047600000" },
+                          { "eventName": "Public Holiday", "category": "holiday", "color": "green","date":"1495196400000" },
+                          { "eventName": "Due date of Project Dilivery", "category": "Work", "color": "orange","date":"1495455600000" },
+                           { "eventName": "Lunch Meeting W/ Mark", "category": "Work", "color": "orange","date":"1497322091394" },
+                          { "eventName": "Rob Birthday  ", "category": "Birthday", "color": "blue","date":"1497322091394" },
+                          { "eventName": "Appointment With Dr David", "category": "Medical", "color": "yellow","date":"1497047600000" },
+                          { "eventName": "Public Holiday", "category": "holiday", "color": "green","date":"1497196400000" },
+                          { "eventName": "Due date of Project Dilivery", "category": "Work", "color": "orange","date":"1497455600000" },
+                           { "eventName": "Lunch Meeting W/ Mark", "category": "Work", "color": "orange","date":"1500322091394" },
+                          { "eventName": "Rob Birthday  ", "category": "Birthday", "color": "blue","date":"1500322091394" },
+                          { "eventName": "Appointment With Dr David", "category": "Medical", "color": "yellow","date":"150047600000" },
+                          { "eventName": "Public Holiday", "category": "holiday", "color": "green","date":"150096400000" },
+                          { "eventName": "Due date of Project Dilivery", "category": "Work", "color": "orange","date":"15005600000" },
+                            { "eventName": "Lunch Meeting W/ Mark", "category": "Work", "color": "orange","date":"1502922091394" },
+                          { "eventName": "Rob Birthday  ", "category": "Birthday", "color": "blue","date":"1502922091394" },
+                          { "eventName": "Appointment With Dr David", "category": "Medical", "color": "yellow","date":"1502947600000" },
+                          { "eventName": "Public Holiday", "category": "holiday", "color": "green","date":"1502996400000" },
+                          { "eventName": "Due date of Project Dilivery", "category": "Work", "color": "orange","date":"1502955600000" },
+                          { "eventName": "Appoint ment With Dr David", "category": "Medical", "color": "yellow","date":"1499185140000" },
+                          { "eventName": "Soccer Match", "category": "holiday", "color": "green","date":"1492887600000" },
+                          { "eventName": "Public Holiday", "category": "holiday", "color": "green","date":"1494173940000" }]'
           >
 
           </pf-calendar-events>
