@@ -42,7 +42,7 @@ a. material-calendar
 b. classic-calendar
 
 Once you decide you general look and feel then you can further customize the details, e.g. if you chose a Material Design look and feel and you want to change the width, hight, color etc. you can do that with the provided API. 
-#### material Calendar Example
+#### Material Calendar Example
 <!---
 ```
 <custom-element-demo>
@@ -222,7 +222,7 @@ Comments, questions, suggestions, issues, and pull requests are all welcome.
 
 Joing us at [![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-- [Twitter](<a href="https://twitter.com/polymerjs" class="twitter-follow-button" data-show-count="false">Follow @polymerjs</a>)
+- [Twitter](<a href="https://twitter.com/polymerio" class="twitter-follow-button" data-show-count="false">Follow @polymerio</a>)
 - [Facebook] (https://www.facebook.com/polymerjs)
 
 ### Some ways to help:
