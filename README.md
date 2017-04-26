@@ -224,7 +224,8 @@ Joing us at [![Join the chat at https://gitter.im/pf-elements/Lobby](https://bad
 
 - [Twitter](<a href="https://twitter.com/polymerio" class="twitter-follow-button" data-show-count="false">Follow @polymerio</a>)
 - [Facebook] (https://www.facebook.com/polymerjs)
-
+- [Google+] (https://plus.google.com/116168214823506639166) 
+- [YouTube] (https://www.youtube.com/channel/UCDKqvDyAn_QTBvCPvrZKTkw) 
 ### Some ways to help:
 
 - **Test the elements and provide feedback**: We would love to hear your feedback on anything related to the elements, like features, API and design. The best way to start is by trying them out. And to get a quick response, either drop a question/comment on the chat or open an issue in GitHub.
