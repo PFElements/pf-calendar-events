@@ -3,8 +3,8 @@
 A Polymer 2.0 based collection of reusable web components 
 
 [![Join the chat at https://gitter.im/pf-elements/Lobby](https://badges.gitter.im/pf-elements/Lobby.svg)](https://gitter.im/pf-elements/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![Polymer Version](https://img.shields.io/badge/polymer-v2-blue.svg)](https://www.polymer-project.org)
 
 ## Demo
 [Click here for Demo](https://www.webcomponents.org/element/PFElements/pf-calendar-events/demo/demo/index.html)
@@ -265,6 +265,10 @@ Your application is already set up to be tested via [web-component-tester](https
 ## Contributing
 
 Comments, questions, suggestions, issues, and pull requests are all welcome.
+
+* Give us a **Star on GitHub**.
+
+
 
 ### Get in touch with the team
 
