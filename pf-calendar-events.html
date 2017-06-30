@@ -1,5 +1,5 @@
 
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
 
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">
 
@@ -486,10 +486,8 @@ Custom property                         | Description                           
                 width:25px;
                 height:25px;
 
-
                 /*width of the image*/
                 background: url(images/ic_add.png) left top no-repeat;
-
 
 
                 display: var(--pf-calendar-addbutton-disply, inline-block);
@@ -522,6 +520,108 @@ Custom property                         | Description                           
                 background: var(--pf-calendar-legend-bg, #009688);
                 line-height: 30px;
             }
+            @media (max-width: 430px) {
+                .classic-calendar, .material-calendar {
+                    width: 350px;
+                    height: 560px;
+                }
+
+                .material-calendar .header, .classic-calendar .header {
+                    width: 350px;
+                }
+
+                .material-calendar .day, .classic-calendar .day {
+                    width: 48px;
+                    padding: 5px;
+                }
+
+                .material-calendar .day-name, .classic-calendar .day-name {
+                    margin-bottom: 3px;
+                }
+                .day-number {
+                    font-size: 18px;
+                    letter-spacing: 1px;
+                }
+                .material-calendar .details,.classic-calendar .details{
+                    width: 320px;
+                    height: 65px;
+                }
+            }
+            @media (max-width: 360px) {
+                .classic-calendar, .material-calendar {
+                    width: 320px;
+                    height: 540px;
+                }
+
+                .material-calendar .header, .classic-calendar .header {
+                    width: 320px;
+                }
+
+                .material-calendar .day, .classic-calendar .day {
+                    width: 45px;
+                    padding: 4px;
+                }
+
+                .material-calendar .day-name, .classic-calendar .day-name {
+                    margin-bottom: 3px;
+                }
+                .day-number {
+                    font-size: 16px;
+                    letter-spacing: 1px;
+                }
+                .material-calendar .details,.classic-calendar .details{
+                    width: 300px;
+                    height: 65px;
+                }
+
+                .addbutton {
+                    margin: 0px 23px;
+                }
+                .event {
+                    font-size: 14px;
+                }
+            }
+            @media (max-width: 330px) {
+                .classic-calendar, .material-calendar {
+                    width: 280px;
+                    height: 480px;
+                }
+
+                .material-calendar .header, .classic-calendar .header {
+                    width: 280px;
+                }
+
+                .material-calendar .day, .classic-calendar .day {
+                    width: 36px;
+                    padding: 1px;
+                }
+
+                .material-calendar .day-name, .classic-calendar .day-name {
+                    margin-bottom: 2px;
+                }
+                .day-number {
+                    font-size: 14px;
+                    letter-spacing: 1px;
+                }
+                .material-calendar .details,.classic-calendar .details{
+                    width: 260px;
+                    height: 60px;
+                }
+                .material-calendar .numberCircle,.classic-calendar .numberCircle {
+                    width: 30px;
+                    height: 31px;
+                    font-size: 20px;
+                    letter-spacing: 1px;
+
+                }
+                .addbutton {
+                    margin: 0px 23px;
+                }
+                .event {
+                    font-size: 12px;
+                }
+            }
+
 
             .entry {
                 position: relative;
@@ -795,6 +895,7 @@ Custom property                         | Description                           
                     '_drawCalendar(data.*)'
                 ]
             }
+
             _drawCalendar(){
                 this.month=null
                 this.header=null
@@ -1270,6 +1371,7 @@ if (dateType=="string"){
                 var day = e.detail.date;
                 var eve = e.detail.events;
             }
+
             connectedCallback() {
 
                 super.connectedCallback();
@@ -1278,6 +1380,9 @@ if (dateType=="string"){
 
 
 
+            }
+            constructor() {
+                super();
             }
 
         }
