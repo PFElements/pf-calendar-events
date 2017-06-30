@@ -370,6 +370,7 @@ Custom property                         | Description                           
 
             }
 
+
             .events.in {
                 -webkit-animation: fadeIn .3s ease both;
                 -moz-animation: fadeIn .3s ease both;
@@ -409,7 +410,7 @@ Custom property                         | Description                           
 
                 margin:2px;
                 /*width of the image*/
-                background: url(images/img_dlt.png) left top no-repeat;
+                background: url(images/img_dlt.png) no-repeat top left;
                 float: right;
                 cursor: pointer;
                 display: var(--pf-calendar-deletebutton-disply, inline);
@@ -487,11 +488,14 @@ Custom property                         | Description                           
                 height:25px;
 
                 /*width of the image*/
-                background: url(images/ic_add.png) left top no-repeat;
+                background: url(images/ic_add.png) no-repeat top left;
 
 
                 display: var(--pf-calendar-addbutton-disply, inline-block);
+
                 cursor: pointer;
+                border: none;
+                outline: none;
 
             }
 
@@ -1222,8 +1226,8 @@ if (dateType=="string"){
                     var div = self._createElement('div', 'event');
                     var square = self._createElement('div', 'event-category ' + ev.color);
                     var span = self._createElement('span', '', ev.eventName);
-                    var editButton = self._createElement('img', 'editEvent', "Edit");
-                    var dltButton = self._createElement('img', 'dltEvent', "Delete");
+                    var editButton = self._createElement('div', 'editEvent', "");
+                    var dltButton = self._createElement('div', 'dltEvent', "");
                     var editDltContainer = self._createElement('div', 'editDltContainer');
                     span.addEventListener('click', function () {
                         self._selectEvent(ev);
@@ -1249,7 +1253,7 @@ if (dateType=="string"){
                     div.appendChild(span);
                     wrapper.appendChild(div);
                 }
-                var addbutton = this._createElement('img', 'addbutton', 'Add');
+                var addbutton = this._createElement('div', 'addbutton', '');
                 addbutton.addEventListener('click', function () {
                     self._addnewEve(day);
                 });
