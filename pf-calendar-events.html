@@ -910,9 +910,9 @@ Custom property                         | Description                           
                 }
                 this.$.calendar.innerHTML = '';
                 if(!this.data){
-//dummy data
                     this.data=JSON.parse('[{ "eventName": "Lunch Meeting w/ Mark", "category": "Work", "color": "orange","date":"14913220913940" }]');
                 }
+
                 this.calendar = this._Calendar(this.$.calendar,
                         this.data);
             }
