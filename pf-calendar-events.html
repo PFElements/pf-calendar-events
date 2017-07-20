@@ -1124,7 +1124,7 @@ if (dateType=="string"){
                     }, []);
 
                     todaysEvents.forEach(function (ev) {
-                        var evSpan = self._createElement('span', ev.color);
+                        var evSpan = self._createColorElement('span','new',ev.color);
                         element.appendChild(evSpan);
                     });
                 }
@@ -1224,7 +1224,7 @@ if (dateType=="string"){
 
                 events.forEach(function (ev) {
                     var div = self._createElement('div', 'event');
-                    var square = self._createElement('div', 'event-category ' + ev.color);
+                    var square = self._createColorElement('div', 'event-category ', ev.color);
                     var span = self._createElement('span', '', ev.eventName);
                     var editButton = self._createElement('div', 'editEvent', "");
                     var dltButton = self._createElement('div', 'dltEvent', "");
@@ -1293,7 +1293,7 @@ if (dateType=="string"){
                     return memo;
                 }, []).forEach(function (e) {
                     var parts = e.split('|');
-                    var entry = self._createElement('span', 'entry ' + parts[1], parts[0]);
+                    var entry = self._createColorElement('span', 'entry ',parts[1], parts[0]);
                     legend.appendChild(entry);
                 });
                 this.el.appendChild(legend);
@@ -1320,11 +1320,28 @@ if (dateType=="string"){
 
                 if (className) {
                     ele.className = className;
+
                 }
                 if (innerText) {
                     ele.innderText = ele.textContent = innerText;
                 }
                 return ele;
+            }
+            _createColorElement(tagName, className, color,innerText) {
+                var ele = document.createElement(tagName);
+
+                if (className) {
+                    ele.className = className;
+
+                }
+               if (innerText) {
+                    ele.innderText = ele.textContent = innerText;
+               ele.style.background = color
+                }else {
+
+                   ele.style.background = color
+               }
+                   return ele;
             }
             _convertMillsDate(data) {
 
