@@ -1,6 +1,6 @@
 {
   "name": "pf-calendar-events",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Polymer 2.0 element based custom elements enabling CRUD operation for Calendar Events, appointments, meetings, reminders etc",
   "main": "pf-calendar-events.html",
   "repository": "PFElements/pf-calendar-events",
