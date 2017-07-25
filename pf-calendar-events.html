@@ -81,7 +81,7 @@ Custom property                         | Description                           
                 transform: translate3d(0, 0, 0);
                 width: var(--pf-calendar-width, 420px);
                 margin: 0 auto;
-                height: var(--pf-calendar-height, 570px);
+                height: var(--pf-calendar-height, 720px);
                 overflow: hidden;
             }
             .material-calendar {
@@ -90,7 +90,7 @@ Custom property                         | Description                           
                 transform: translate3d(0, 0, 0);
                 width: var(--pf-calendar-width, 420px);
                 margin: 0 auto;
-                height: var(--pf-calendar-height, 630px);
+                height: var(--pf-calendar-height, 720px);
                 overflow: hidden;
                 font-family: 'Roboto Condensed', sans-serif;
             }
@@ -516,6 +516,29 @@ Custom property                         | Description                           
                 background: var(--pf-calendar-legend-bg, rgba(60, 60, 60, 1));
                 line-height: 30px;
             }
+            .material-calendar .legend .cat {
+                position: relative;
+                display: inline-block;
+                margin: 0px 3px;
+            }
+            .material-calendar .legend .cat .event-category {
+        margin-top: 10px;
+        width: 10px;
+
+        margin-left: 5px;
+        }
+            .classic-calendar .legend .cat {
+                position: relative;
+                display: inline-block;
+                margin: 0px 3px;
+            }
+            .classic-calendar .legend .cat .event-category {
+        margin-top: 10px;
+        width: 10px;
+
+        margin-left: 5px;
+        }
+
             .material-calendar .legend {
                 position: absolute;
                 bottom: 0;
@@ -629,20 +652,10 @@ Custom property                         | Description                           
 
             .entry {
                 position: relative;
-                padding: 0 0 0 25px;
+                padding: 0 0 0 8px;
                 font-size: 13px;
-                display: inline-block;
-                line-height: 30px;
-                background: transparent;
-            }
 
-            .entry:after {
-                position: absolute;
-                content: '';
-                height: 5px;
-                width: 5px;
-                top: 12px;
-                left: 14px;
+                background: transparent;
             }
 
             .entry.blue:after {
@@ -1293,8 +1306,16 @@ if (dateType=="string"){
                     return memo;
                 }, []).forEach(function (e) {
                     var parts = e.split('|');
-                    var entry = self._createColorElement('span', 'entry ',parts[1], parts[0]);
-                    legend.appendChild(entry);
+                    var div = self._createElement('div','cat');
+                    var evSpan = self._createColorElement('span','event-category',parts[1]);
+
+                    div.appendChild(evSpan);
+
+
+                    var entry = self._createElement('span', 'entry ', parts[0]);
+                    div.appendChild(entry);
+
+                    legend.appendChild(div);
                 });
                 this.el.appendChild(legend);
             }
