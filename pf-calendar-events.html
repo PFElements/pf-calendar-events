@@ -446,20 +446,14 @@ Custom property                         | Description                           
             }
             .classic-calendar  .numberCircle {
                 border-radius: 50%;
-                behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-
-                width: 36px;
-                height: 36px;
-
-
                 background: var(--pf-calendar-selected-date-bg,black);
                 border: 2px solid transparent;
                 color: var(--pf-calendar-selected-date-color,#fff);
                 text-align: center;
                 font-size: 24px;
                 letter-spacing: 1.5px;
-
             }
+            
             .material-calendar .event span {
                 display: inline-block;
                 padding: 0 0 0 7px;
@@ -468,20 +462,14 @@ Custom property                         | Description                           
             }
             .material-calendar  .numberCircle {
                 border-radius: 50%;
-                behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-
-                width: 36px;
-                height: 36px;
-
-
                 background: var(--pf-calendar-selected-date-bg,#009688);
                 border: 2px solid transparent;
                 color: var(--pf-calendar-selected-date-color,#fff);
                 text-align: center;
                 font-size: 24px;
                 letter-spacing: 1.5px;
-
             }
+            
             .addbutton {
                 margin: 8px 16px;
                 width:25px;
@@ -1208,8 +1196,8 @@ if (dateType=="string"){
                 }, []);
                 this._daySelected(day, todaysEvents);
                 this._renderEvents(day, todaysEvents, details);
-
-                arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + 27 + 'px';
+				
+                arrow.style.left = el.offsetLeft - el.parentNode.offsetLeft + (el.offsetWidth / 2) + 'px';
             }
             _selectEvent(ev) {
                 var mEv = ev;
