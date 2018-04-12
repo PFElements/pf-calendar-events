@@ -97,7 +97,7 @@ Custom property                         | Description                           
 
             .classic-calendar .header {
                 height:  var(--pf-calendar-header-height,50px);
-                width: 420px;
+                width: var(--pf-calendar-width, 420);
                 background: var(--pf-calendar-header-background, rgba(66, 66, 66, 1));
                 text-align: center;
                 position: relative;
@@ -105,7 +105,7 @@ Custom property                         | Description                           
             }
             .material-calendar .header {
                 height:  var(--pf-calendar-header-height,111px);
-                width: 420px;
+                width: var(--pf-calendar-width, 420);
                 background: var(--pf-calendar-header-background, #009688);
                 text-align: center;
                 position: relative;
@@ -209,7 +209,7 @@ Custom property                         | Description                           
 
             .classic-calendar  .day {
                 display: inline-block;
-                width: 60px;
+                width: calc(var(--pf-calendar-width, 420px) / 7);
                 padding: 10px;
                 text-align: center;
                 vertical-align: top;
@@ -225,7 +225,7 @@ Custom property                         | Description                           
 
             .material-calendar  .day {
                 display: inline-block;
-                width: 60px;
+                width: calc(var(--pf-calendar-width, 420px) / 7);
                 padding: 10px;
                 text-align: center;
                 vertical-align: top;
@@ -310,16 +310,16 @@ Custom property                         | Description                           
 
             .classic-calendar .details {
                 position: relative;
-                width: 420px;
-                height: 75px;
+                width: var(--pf-calendar-width, 420px);
+                height: 85px;
                 background: var(--pf-calendar-event-detail-bg, rgba(164, 164, 164, 1));
                 margin-top: 5px;
                 border-radius: 4px;
             }
             .material-calendar .details {
                 position: relative;
-                width: 420px;
-                height: 75px;
+                width: var(--pf-calendar-width, 420px);
+                height: 85px;
                 background: var(--pf-calendar-event-detail-bg, #009688);
                 margin-top: 5px;
                 border-radius: 4px;
