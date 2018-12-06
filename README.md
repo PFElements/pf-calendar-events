@@ -31,6 +31,11 @@ See the list of elements, demos, and documentation by browsing this collection o
 ---
 # Customization and usage
 
+It is recommended to add Roboto Condesned 300 import to your page
+```html
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">
+```
+
 `<pf-calendar-events></pf-calendar-events>` can be customized in a number of ways
 
 ## Customization of look and feel
