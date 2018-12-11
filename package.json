@@ -1,20 +1,20 @@
 {
   "name": "pf-calendar-events",
-  "version": "0.3.0",
-  "description": "Polymer 2.0 element based custom elements enabling CRUD operation for Calendar Events, appointments, meetings, reminders etc",
-  "main": "pf-calendar-events.html",
-  "repository": "PFElements/pf-calendar-events",
+  "version": "0.4.0",
+  "description": "Polymer 3 element based custom element enabling CRUD operation for Calendar Events, appointments, meetings, reminders etc",
+  "main": "pf-calendar-events.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PFElements/pf-calendar-events.git"
+  },
   "keywords": [
     "Polymer",
-    "Polymer 2.0",
     "calendar",
     "appointments",
     "reminders",
     "meetings",
-    "firebase",
     "custom element",
     "web component",
-    "polymerfire",
     "dots"
   ],
   "authors": [
@@ -26,12 +26,19 @@
     "url": "https://github.com/PFElements/pf-calendar-events/issues"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
-    "web-component-tester": "v6.0.0-prerelease.5",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.5"
+    "@polymer/iron-component-page": "^4.0.1",
+    "@polymer/iron-demo-helpers": "^3.0.2",
+    "@webcomponents/webcomponentsjs": "^2.2.1",
+    "web-component-tester": "^6.9.0"
   },
   "scripts": {
     "test": "wct"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": "Pixy Flux <info@pixyflux.com>",
+  "dependencies": {
+    "moment": "^2.22.2"
   }
 }

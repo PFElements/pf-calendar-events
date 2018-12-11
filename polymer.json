@@ -1,7 +1,9 @@
 {
   "lint": {
     "rules": [
-      "polymer-2-hybrid"
-    ]
+      "polymer-3"
+    ],
+    "npm": true,
+    "moduleResolution": "node"
   }
 }

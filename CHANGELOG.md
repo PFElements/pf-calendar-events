@@ -1,18 +1,15 @@
-# [0.3.0]
-Now you can pick a color for various categories
-
-# [0.2.0]
-CRUD and form for meetings, appointments, events
-
-<a name="0.1.0"></a>
-# [0.1.0](https://github.com/PFElements/pf-pageindicator/compare/v0.1.3...v0.2.0) (7Apr2017)
-
+# [0.4.0]
+Updated for Polymer 3
 
 ### Code Refactoring
 
-* Updated
+* Changed to ES6 modules and full-JS syntax
 
 
 ### BREAKING CHANGES
 
-* No Breaking
+* Moving support to Polymer 3, see [Polymer 3 upgrade guide](https://polymer-library.polymer-project.org/3.0/docs/upgrade)
+* Now requires an import of Roboto Condensed 300 font (`<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300" rel="stylesheet">` in head) to display fully correctly
+
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/PFElements/pf-calendar-events/compare/v0.3.0...v0.4.0) (7Dec2018)
