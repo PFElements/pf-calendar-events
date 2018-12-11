@@ -366,11 +366,10 @@ var _template = html`
         height:25px;
 
         margin:2px;
-        /*width of the image*/
-        background: url(/images/img_dlt.png) no-repeat top left;
         float: right;
         cursor: pointer;
         display: var(--pf-calendar-deletebutton-disply, inline);
+        fill: var(--pf-calendar-deletebutton-color, white);
     }
 
     .editEvent {
@@ -378,11 +377,10 @@ var _template = html`
         height:25px;
 
         margin:2px;
-        /*width of the image*/
-        background: url(/images/img_edit.png) left top no-repeat;
         float: right;
         cursor: pointer;
         display: var(--pf-calendar-editbutton-disply, inline);
+        fill: var(--pf-calendar-editbutton-color, white);
     }
 
 
@@ -444,11 +442,9 @@ var _template = html`
         width:25px;
         height:25px;
 
-        /*width of the image*/
-        background: url(/images/ic_add.png) no-repeat top left;
-
 
         display: var(--pf-calendar-addbutton-disply, inline-block);
+        fill: var(--pf-calendar-addbutton-color, white);
 
         cursor: pointer;
         border: none;
@@ -861,8 +857,11 @@ margin-left: 5px;
  * `--pf-calendar-addevent-button-text-color`| Add Event text color                  | #fff
  * `--pf-calendar-addevent-button-hover-color`|  Add event button hover color        | rgba(170, 170, 170, 1)
  * `--pf-calendar-addbutton-disply`        |  to hide button set "none"              |inline-block
+ * `--pf-calendar-addbutton-color`         |  color of the button                    | white
  * `--pf-calendar-deletebutton-disply`     |  to hide button set "none"              |inline
+ * `--pf-calendar-deletebutton-color`      |  color of the button                    | white
  * `--pf-calendar-editbutton-disply`       |  to hide button set "none"              |inline
+ * `--pf-calendar-editbutton-color`        |  color of the button                    | white
  * `--pf-calendar-legend-bg`               |  Background color of legend bar         | rgba(60, 60, 60, 1)
  * 
  * @customElement
@@ -1232,8 +1231,8 @@ class PFCalendar extends PolymerElement {
       var div = self._createElement('div', 'event');
       var square = self._createColorElement('div', 'event-category ', ev.color);
       var span = self._createElement('span', '', ev.eventName);
-      var editButton = self._createElement('div', 'editEvent', "");
-      var dltButton = self._createElement('div', 'dltEvent', "");
+      var editButton = self._createSVG('editEvent', '<g><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></g>');
+      var dltButton = self._createSVG('dltEvent', '<g><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></g>');
       var editDltContainer = self._createElement('div', 'editDltContainer');
       span.addEventListener('click', function () {
         self._selectEvent(ev);
@@ -1259,7 +1258,7 @@ class PFCalendar extends PolymerElement {
       div.appendChild(span);
       wrapper.appendChild(div);
     }
-    var addbutton = this._createElement('div', 'addbutton', '');
+    var addbutton = this._createSVG('addbutton', '<g><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></g>');
     addbutton.addEventListener('click', function () {
       self._addnewEve(day);
     });
@@ -1338,6 +1337,19 @@ class PFCalendar extends PolymerElement {
     }
     if (innerText) {
       ele.innderText = ele.textContent = innerText;
+    }
+    return ele;
+  }
+  _createSVG(className, inner) {
+    var ele = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    ele.setAttribute('viewBox', '0 0 24 24');
+    ele.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+
+    if (className) {
+      ele.classList.add(className);
+    }
+    if (inner) {
+      ele.innerHTML = inner;
     }
     return ele;
   }
